@@ -13,6 +13,7 @@ public class AccountController : Controller
         if (correcto){
             Usuario user = BD.GetUsuario(usuario);
             ViewBag.Usuario=user;
+            Console.WriteLine(user);
             return View("PaginaInicio");
         }
 
@@ -26,8 +27,12 @@ public class AccountController : Controller
         return View();
     }
 
-    public IActionResult Registro(string usuario, string contraseña, string email){
-        BD.Registro(usuario,contraseña,email);
-        return View("InicioSesion");
-    }
+    public IActionResult Registro(string usuario, string contraseña, string mail)
+{
+    BD.Registro(usuario, contraseña, mail);
+    return View("InicioSesion");
+}
+
+
+    
 }

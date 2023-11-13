@@ -22,6 +22,7 @@ public class BD
         }
     } 
 
+
         public static int CambiarContraseña(string Nombre, string Contraseña)
         {
         int resultado=0;
@@ -33,7 +34,6 @@ public class BD
     }
 
     public static Usuario GetUsuario(string Nombre){
-
         Usuario user= new Usuario();
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC GetUsuario @user";
