@@ -24,7 +24,7 @@ public class AccountController : Controller
     }
 
        public IActionResult Registrarse(){
-        return View();
+        return View("Registrarse");
     }
 
     public IActionResult Registro(string usuario, string contraseña, string mail)

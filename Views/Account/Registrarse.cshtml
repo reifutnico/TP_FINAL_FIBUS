@@ -16,7 +16,7 @@
                     <label for="fname">Contraseña:</label>
                 </div>
                 <div class="col-75">
-                    <input type="password" id="password" name="password" onkeyup="validatePassword()" placeholder="Su contraseña..">
+                    <input type="password" id="password" name="contraseña" onkeyup="validatePassword()" placeholder="Su contraseña..">
                     <p id="resultado"></p>
                 </div>
             </div>
@@ -34,3 +34,5 @@
     </div>
 </form>
 <button class="button" style="vertical-align:middle"><a href='@Url.Action("Login","Account")'><span>Volver al Login</span></a></button>
+
+/*falta cosas de java (los colores ), que no pueda poner misma usuario que contraseña, y que salte mensaje error cuando el nombre de usuario ya existe*/

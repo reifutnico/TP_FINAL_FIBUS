@@ -14,11 +14,11 @@ public class BD
         return correcto;
     }
 
-    public static void Registro(string us, string con, string em){
+    public static void Registro(string usuario, string contraseña, string mail){
 
         using (SqlConnection db= new SqlConnection(_connectionstring)){
             string sql ="EXEC RegistrarseUsuario @u,@c,@e";
-            db.Execute(sql, new{u=us,c=con,e=em});
+            db.Execute(sql, new{u=usuario,c=contraseña,e=mail});
         }
     } 
 
