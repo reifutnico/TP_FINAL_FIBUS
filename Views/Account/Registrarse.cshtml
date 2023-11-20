@@ -13,13 +13,20 @@
             </div>
         <div class="row">
                 <div class="col-25">
-                    <label for="fname">Contraseña:</label>
+                    <label for="fname">contraseña:</label>
                 </div>
                 <div class="col-75">
                     <input type="password" id="password" name="contraseña" onkeyup="validatePassword()" placeholder="Su contraseña..">
                     <p id="resultado"></p>
                 </div>
+                   <div id="infocontraseña" class="form-text">
+      <span>La contraseña debe tener: </span> <span style="color:red" id="largo">entre 8 y 100 caracteres</span><span style="color:red" id="caracterEspecial">, al menos un caracter especial</span><span style="color:red" id="letraMayuscula"> y al menos una letra en mayuscula.</span>
+    </div>
             </div>
+            @* repita contraseña *@
+  
+
+
         <div class="row">
                 <div class="col-25">
                     <label for="fname">Correo Electronico:</label>

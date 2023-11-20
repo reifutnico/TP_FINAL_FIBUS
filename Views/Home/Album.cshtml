@@ -8,9 +8,12 @@
             <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
             <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Inventario", new {id = ViewBag.Usuario.IdUsuario})'>Inventario</a></li>
+            <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
+
         </ul>
     </nav>
 </header>
+
 
 <div class="parent" id="pagina">
     <div class="carta 1">
@@ -56,4 +59,3 @@
 </div>
 
 
-<a href='@Url.Action("InicioSesion")'>Cerrar sesion</a>

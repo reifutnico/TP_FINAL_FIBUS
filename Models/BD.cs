@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=DESKTOP-N9T7V8S\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
