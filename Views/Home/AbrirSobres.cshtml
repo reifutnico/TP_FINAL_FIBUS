@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Abrir Sobres";
+}
+
+<link rel="stylesheet" href="~/css/timerStyle.css">
+
+<header>
+    <nav>
+        <ul>
+            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Inventario", new {id = ViewBag.Usuario.IdUsuario})'>Inventario</a></li>
+        </ul>
+    </nav>
+</header>
+
+@* <div class="container-countdown" id="countdown">
+  <div class="countdown">
+      <h1 class="tiempo-texto">Tiempo restante</h1>
+      <div>
+          <p class="cuadros" id="minutes"></p>
+      </div>
+      :
+      <div>
+          <p class="cuadros" id="seconds"></p>
+      </div>
+  </div>
+</div> *@
+
+
+<div style="display: flex; justify-content: space-around;">
+  <div class="sobre">
+    <button id="buttonPremium" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobrePremium(@ViewBag.Usuario.IdUsuario)">Abrir sobre Premium</button>
+  </div>
+
+  <div class="sobre">
+    <button id="buttonNormal" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobreNormal(@ViewBag.Usuario.IdUsuario)">Abrir sobre Normal</button>
+  </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" id="ModalSobre" aria-labelledby="ModalSerieTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div id="figuritasObtenidas"></div>
+        </div>
+      </div>
+    </div>
+</div> 
+
+
+@* <script src="~/js/script.js" asp-append-version="true"></script> *@
+@* <script src="~/js/script2.js" asp-append-version="true"></script> *@

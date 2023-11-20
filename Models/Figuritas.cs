@@ -1,3 +1,6 @@
+
+namespace tpFinal.Models;
+
 public class Figuritas{
     public int IdFigurita {get;set;}
     public string Nombre {get;set;}

@@ -1,4 +1,6 @@
-/*public class Sobres
+namespace tpFinal.Models;
+
+public class Sobres
 {
     public int IdSobre{get;set;}
     public string Nombre{get;set;}
@@ -8,4 +10,3 @@
     public int Fecha_Fin{get;set;}
     public string Descripcion{get;set;}
 }
-*/

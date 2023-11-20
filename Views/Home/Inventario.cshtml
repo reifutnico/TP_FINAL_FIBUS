@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Inventario";
+}
+
+<header>
+    <nav>
+        <ul>
+            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Inventario", new {id = ViewBag.Usuario.IdUsuario})'>Inventario</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="figuritas">
+    @foreach(var item in ViewBag.Inventario){
+        <div class="figurita">
+            <h1>@item.Nombre</h1>
+        </div>
+    }
+</div>

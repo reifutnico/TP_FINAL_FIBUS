@@ -1,9 +1,11 @@
 using System.Data.SqlClient;
 using Dapper;
 
+namespace tpFinal.Models;
+
 public class BD
 {
-    private static string _connectionstring=@"Server= .;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-N9T7V8S\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -22,37 +24,60 @@ public class BD
         }
     } 
 
-
-        public static int CambiarContraseña(string Nombre, string Contraseña)
-        {
-        int resultado=0;
+    public static int CambiarContraseña(string Nombre, string Contraseña)
+    {
+        int resultado = 0;
         using(SqlConnection db = new SqlConnection(_connectionstring)){
             string sql="EXEC SP_CambiarContraseña @pUsername, @pContraseña";
-            resultado=db.QueryFirstOrDefault<int>(sql, new{pUsername=Nombre,pContraseña=Contraseña});
+            resultado = db.QueryFirstOrDefault<int>(sql, new{pUsername=Nombre,pContraseña=Contraseña});
         }
         return resultado;
     }
 
-    public static Usuario GetUsuario(string Nombre){
-        Usuario user= new Usuario();
+    public static Usuario GetUsuarioByNombre(string Nombre){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC GetUsuario @user";
-            user=db.QueryFirstOrDefault<Usuario>(sql, new{user=Nombre});
+            return db.QueryFirstOrDefault<Usuario>(sql, new{user=Nombre});
         }
-        return user;
     }
 
-  /*      
-public static Figuritas figuritasAleatoria()
-{
-    using (SqlConnection db = new SqlConnection(_connectionstring))
-    {
-        string sql = "SELECT TOP 1 * FROM Figuritas ORDER BY NEWID()";
-        Figuritas figu = db.QueryFirstOrDefault<Figuritas>(sql);
-        return figu;
+    public static Usuario GetUsuarioByID(int id){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC GetUsuarioById @user";
+            return db.QueryFirstOrDefault<Usuario>(sql, new{user=id});
+        }
     }
-}
 
-*/
-    
+    public static List<Figuritas> AbrirSobreP(int id){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC AbrirSobre @user";
+            return db.Query<Figuritas>(sql, new{user=id}).ToList();
+        }
+    }
+    public static Figuritas AbrirSobreN(int id){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC AbrirSobreNormal @user";
+            return db.QueryFirstOrDefault<Figuritas>(sql, new{user=id});
+        }
+    }
+
+    public static List<Figuritas> ObtenerInventario(int id){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC obtenerInventario @user";
+            return db.Query<Figuritas>(sql, new{user=id}).ToList();
+        }
+    }
+
+    public static List<Figuritas> obtenerFiguritas(){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC obtenerFiguritas";
+            return db.Query<Figuritas>(sql).ToList();
+        }
+    }
+    public static void pegarFigurita(int id, int idfigurita){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC obtenerFiguritas @user, @figurita";
+            db.Execute(sql, new{user=id, figurita=idfigurita});
+        }
+    }
 }

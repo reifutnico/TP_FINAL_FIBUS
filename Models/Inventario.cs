@@ -1,7 +1,7 @@
 namespace tpFinal.Models;
 
-public class Album{
-    public int IdAlbum {get;set;}
+public class Inventario{
+    public int IdInventario {get;set;}
     public string IdUsuario {get;set;}
 
 }
