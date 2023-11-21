@@ -9,8 +9,9 @@
         <ul>
             <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
             <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
-            <li><a href='@Url.Action("Inventario", new {id = ViewBag.Usuario.IdUsuario})'>Inventario</a></li>
+            <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
+            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
 
         </ul>
     </nav>
@@ -33,10 +34,12 @@
 <div style="display: flex; justify-content: space-around;">
   <div class="sobre">
     <button id="buttonPremium" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobrePremium(@ViewBag.Usuario.IdUsuario)">Abrir sobre Premium</button>
+    <h6>Precio: 8</h6>
   </div>
 
   <div class="sobre">
     <button id="buttonNormal" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobreNormal(@ViewBag.Usuario.IdUsuario)">Abrir sobre Normal</button>
+    <h6>Precio: 4</h6>
   </div>
 </div>
 

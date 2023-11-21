@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=.;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -78,6 +78,20 @@ public class BD
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC obtenerFiguritas @user, @figurita";
             db.Execute(sql, new{user=id, figurita=idfigurita});
+        }
+    }
+// PARA VENDER LA FIGURITA
+    public static void VenderFigurita(int idUsuario,int precio, int idFigurita){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC SP_Vender @zprecio, @zidUsuario, @zidFigu";
+            db.Execute(sql, new{zprecio=precio,zidUsuario=idUsuario,zidFigu=idFigurita});
+        }
+    }
+
+    public static void CobrarSobre(int precio){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "UPDATE Usuarios SET Monedas-=@zprecio WHERE IdUsuario=@zidusuario";
+            db.Execute(sql, new{zprecio=precio,zidusuario=Actual.idUsuario});
         }
     }
 }

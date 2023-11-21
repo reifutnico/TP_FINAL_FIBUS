@@ -5,4 +5,5 @@ public class Usuario{
     public string Nombre {get;set;}
     public string Contraseña {get;set;}
     public string Email {get;set;}
+    public int Monedas{get;set;}
 }

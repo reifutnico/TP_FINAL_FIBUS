@@ -7,8 +7,10 @@
         <ul>
             <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
             <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
-            <li><a href='@Url.Action("Inventario", new {id = ViewBag.Usuario.IdUsuario})'>Inventario</a></li>
+            <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
+            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+
         </ul>
     </nav>
 </header>
@@ -17,6 +19,7 @@
     @foreach(var item in ViewBag.Inventario){
         <div class="figurita">
             <h1>@item.Nombre</h1>
+            <h3><a href='@Url.Action("VenderFigu",new{Precio=item.Precio,idFigurita=item.IdFigurita})'>vender por @item.Precio </a></h3>
         </div>
     }
 </div>

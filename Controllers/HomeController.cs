@@ -37,6 +37,7 @@ public class HomeController : Controller
     }
 
     public IActionResult Album(int id){
+        Actual.idUsuario=id;    
         Usuario user = BD.GetUsuarioByID(id);
         ViewBag.Usuario = user;
         ViewBag.Inventario = BD.ObtenerInventario(id);
@@ -44,19 +45,26 @@ public class HomeController : Controller
     }
 
     public IActionResult AbrirSobres(int id){
-        ViewBag.Usuario = BD.GetUsuarioByID(id);
+        Actual.idUsuario=id;    
+        Usuario user = BD.GetUsuarioByID(id);
+        ViewBag.Usuario = user;
         return View();
     }
 
-    public IActionResult Inventario(int id){
-        ViewBag.Usuario = BD.GetUsuarioByID(id);
-        ViewBag.Inventario = BD.ObtenerInventario(id);
+    public IActionResult Inventario(){
+        Usuario user= BD.GetUsuarioByID(Actual.idUsuario);
+        Actual.Monedas=user.Monedas;
+        ViewBag.Usuario=user;
+        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas);
+
+        ViewBag.Inventario= BD.ObtenerInventario(Actual.idUsuario);
         return View();
     }
     
     public List<Figuritas> AbrirSobrePAjax(int id)
     {
         ViewBag.Figuritas = BD.AbrirSobreP(id);
+        BD.CobrarSobre(8);
         return ViewBag.Figuritas;
     }
     public Figuritas AbrirSobreNAjax(int id)
@@ -68,5 +76,14 @@ public class HomeController : Controller
     {
         ViewBag.Figuritas = BD.obtenerFiguritas();
         return ViewBag.Figuritas;
+    }
+// PARA VENDER LA FIGURITA
+    public IActionResult VenderFigu(int precio, int idFigurita){
+        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas+" "+precio+" "+idFigurita + "sex");
+        BD.VenderFigurita(Actual.idUsuario,precio, idFigurita);
+        Actual.Monedas+=precio;
+        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas + "huevp");
+
+        return (RedirectToAction("Inventario"));
     }
 }

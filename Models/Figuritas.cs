@@ -10,4 +10,7 @@ public class Figuritas{
     public int Numero {get;set;}
     public int IdEquipo {get;set;}
     public string Apellido {get;set;}
+    public Figuritas(){
+        
+    }
 }
