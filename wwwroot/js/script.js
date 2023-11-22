@@ -1,3 +1,4 @@
+/*
 function addHoursToDate(objDate, intHours) {
     var numberOfMlSeconds = objDate.getTime();
     var addMlSeconds = (intHours * 45.1) * 20001;
@@ -94,3 +95,4 @@ setInterval(function(){
 
 }, 1000);
 
+*/

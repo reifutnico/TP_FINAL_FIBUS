@@ -47,31 +47,38 @@ public class HomeController : Controller
     public IActionResult AbrirSobres(int id){
         Actual.idUsuario=id;    
         Usuario user = BD.GetUsuarioByID(id);
+        ViewBag.Sobres = BD.ObtenerSobres();
         ViewBag.Usuario = user;
         return View();
     }
 
     public IActionResult Inventario(){
         Usuario user= BD.GetUsuarioByID(Actual.idUsuario);
-        Actual.Monedas=user.Monedas;
         ViewBag.Usuario=user;
-        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas);
-
         ViewBag.Inventario= BD.ObtenerInventario(Actual.idUsuario);
         return View();
     }
     
-    public List<Figuritas> AbrirSobrePAjax(int id)
-    {
-        ViewBag.Figuritas = BD.AbrirSobreP(id);
-        BD.CobrarSobre(8);
-        return ViewBag.Figuritas;
+    public IActionResult Repetidas(){
+        Usuario user= BD.GetUsuarioByID(Actual.idUsuario);
+        Actual.Monedas=user.Monedas;
+        ViewBag.Usuario=user;
+        ViewBag.Repetidas= BD.ObtenerRepes(Actual.idUsuario);
+        return View();
     }
-    public Figuritas AbrirSobreNAjax(int id)
-    {
-        ViewBag.Figurita = BD.AbrirSobreN(id);
-        return ViewBag.Figurita;
-    }
+    
+public IActionResult AbrirSobrePAjax(int id)
+{
+    var figuritas = BD.AbrirSobreP(id);
+    return Json(figuritas);
+}
+
+public IActionResult AbrirSobreNAjax(int id)
+{
+    var figurita = BD.AbrirSobreN(id);
+    return Json(figurita);
+}
+
     public List<Figuritas> MostrarPagina(int id)
     {
         ViewBag.Figuritas = BD.obtenerFiguritas();
@@ -79,11 +86,14 @@ public class HomeController : Controller
     }
 // PARA VENDER LA FIGURITA
     public IActionResult VenderFigu(int precio, int idFigurita){
-        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas+" "+precio+" "+idFigurita + "sex");
         BD.VenderFigurita(Actual.idUsuario,precio, idFigurita);
         Actual.Monedas+=precio;
-        Console.WriteLine(Actual.idUsuario+" "+Actual.Monedas + "huevp");
+        return (RedirectToAction("Repetidas"));
+    }
 
-        return (RedirectToAction("Inventario"));
+        public IActionResult ComprarSobres(int precio){
+        BD.ComprarSobres(Actual.idUsuario,precio);
+        Actual.Monedas-=precio;
+        return (RedirectToAction("AbrirSobres"));
     }
 }

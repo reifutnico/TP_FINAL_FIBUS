@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=.;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -50,20 +50,33 @@ public class BD
 
     public static List<Figuritas> AbrirSobreP(int id){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
-            string sql = "EXEC AbrirSobre @user";
+            string sql = "EXEC AbrirSobrePremium @user";
             return db.Query<Figuritas>(sql, new{user=id}).ToList();
         }
     }
-    public static Figuritas AbrirSobreN(int id){
+    public static List<Figuritas>  AbrirSobreN(int id){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC AbrirSobreNormal @user";
-            return db.QueryFirstOrDefault<Figuritas>(sql, new{user=id});
+            return db.Query<Figuritas>(sql, new{user=id}).ToList();
         }
     }
 
     public static List<Figuritas> ObtenerInventario(int id){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC obtenerInventario @user";
+            return db.Query<Figuritas>(sql, new{user=id}).ToList();
+        }
+    }
+
+    public static List<Sobres> ObtenerSobres(){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC ObtenerSobres";
+            return db.Query<Sobres>(sql).ToList();
+        }
+    }
+        public static List<Figuritas> ObtenerRepes(int id){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC SP_Repetidas @user";
             return db.Query<Figuritas>(sql, new{user=id}).ToList();
         }
     }
@@ -88,9 +101,9 @@ public class BD
         }
     }
 
-    public static void CobrarSobre(int precio){
+    public static void ComprarSobres(int idUsuario, int precio){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
-            string sql = "UPDATE Usuarios SET Monedas-=@zprecio WHERE IdUsuario=@zidusuario";
+            string sql = "EXEC ComprarSobres @zprecio, @zidUsuario";
             db.Execute(sql, new{zprecio=precio,zidusuario=Actual.idUsuario});
         }
     }

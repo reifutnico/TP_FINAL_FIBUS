@@ -1,27 +1,30 @@
 @{
-    ViewData["Title"] = "Inventario";
+    ViewData["Title"] = "Repetidas";
 }
 
 <header>
     <nav>
         <ul>
-     <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
+            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
             <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
             <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
 
+
         </ul>
     </nav>
 </header>
 
+
 <div class="figuritas">
-    @foreach(var item in ViewBag.Inventario){
+    @foreach(var item in ViewBag.Repetidas){
         <div class="figurita">
             <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" class="img-figurita" />
             <h1>@item.Nombre</h1> 
             <h1>@item.Apellido</h1>
+            <h3><a href='@Url.Action("VenderFigu",new{Precio=item.Precio,idFigurita=item.IdFigurita})'>vender por @item.Precio </a></h3>
         </div>
     }
 </div>

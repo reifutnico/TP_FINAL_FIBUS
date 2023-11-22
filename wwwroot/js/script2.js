@@ -1,3 +1,4 @@
+/*
 function addHoursToDate(objDate, intHours) {
     var numberOfMlSeconds = objDate.getTime();
     var addMlSeconds = (intHours * 60) * 60001;
@@ -53,3 +54,5 @@ function addHoursToDate(objDate, intHours) {
           $finalMessage.style.transform = 'translateY(0)';
       }
   }, 1000);
+
+  */

@@ -192,11 +192,33 @@ header{
   margin-top: 40px;
 }
 
+/* En tu archivo de estilos CSS */
+.img-figurita {
+  width: 200px; /* Define el ancho deseado */
+  height: auto; /* Autoajusta la altura según el ancho */
+  /* Otros estilos, como márgenes o bordes, si es necesario */
+}
+
+
 .figurita{
   margin-inline: 1%;
   text-align: center;
   width: 30%;
   margin-bottom: 3%;
+}
+
+.figuritasObtenidas
+{
+  width: 200px; 
+  height: auto; 
+ 
+}
+
+.img-figuritaSobre {
+  width: 200px; 
+  height: auto;
+  display: inline-block;
+    margin-right: 10px; 
 }
 
 .sobre{

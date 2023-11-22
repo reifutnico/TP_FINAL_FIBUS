@@ -5,10 +5,12 @@
 <header>
     <nav>
         <ul>
-            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
+           <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
             <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
+            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
 
         </ul>
     </nav>

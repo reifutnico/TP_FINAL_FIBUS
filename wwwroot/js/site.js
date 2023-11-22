@@ -34,40 +34,41 @@ function validatePassword() {
 
 /*-----------*/
 
-
 function AbrirSobrePremium(ID) {
-    let Temp = "";
+    $.ajax({
+        url: '/Home/AbrirSobrePAjax',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { id: ID },
+        success: function (response) {
+            let temp = "";
 
-    $.ajax(
-        {
-            url: '/Home/AbrirSobrePAjax',
-            type: 'POST',
-            dataType: 'JSON',
-            data: { id: ID },
-            success: function (response) {
-                response.forEach(element => {
-                    Temp += element.nombre + "<br>";
-                });
-                $("#figuritasObtenidas").html(Temp);
-            }
-        });
+            response.forEach(element => {
+                temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
+            });
+
+            $("#figuritasObtenidas").html(temp);
+        }
+    });
 }
-
 
 function AbrirSobreNormal(ID) {
-    $.ajax(
-        {
-            url: '/Home/AbrirSobreNAjax',
-            type: 'POST',
-            dataType: 'JSON',
-            data: { id: ID },
-            success: function (response) {
-                $("#figuritasObtenidas").html(response.nombre);
-            }
-        });
+    $.ajax({
+        url: '/Home/AbrirSobreNAjax',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { id: ID },
+        success: function (response) {
+            let temp = "";
+
+            response.forEach(element => {
+                temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
+            });
+
+            $("#figuritasObtenidas").html(temp);
+        }
+    });
 }
-
-
 
 function MostrarPagina(ID, numInicio) {
     let i = 0;
