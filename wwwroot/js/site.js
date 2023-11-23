@@ -1,4 +1,6 @@
 ﻿
+//Inicio sesion
+
 function showPassword() {
     const passwordField = document.getElementById('Contraseña');
     if (passwordField.type === 'password') {
@@ -8,6 +10,7 @@ function showPassword() {
     }
 }
 
+//Validar seguridad de la Contraseña, debe tener 8 caracteres, una mayus y una especial. Validar que sea la misma que sea la misma de confirmar 
 
 function validatePassword() {
     var password = document.getElementById("password").value;
@@ -38,14 +41,11 @@ function validatePassword() {
         confirmacion.style.color = "red";
         confirmacion.innerHTML = "Las contraseñas no coinciden";
     }
-
-    
 }
 
+/*Abrir sobres*/
 
-
-/*-----------*/
-
+//premium - 5 figus
 function AbrirSobrePremium(ID) {
     $.ajax({
         url: '/Home/AbrirSobrePAjax',
@@ -64,6 +64,7 @@ function AbrirSobrePremium(ID) {
     });
 }
 
+//normal - 3 figus
 function AbrirSobreNormal(ID) {
     $.ajax({
         url: '/Home/AbrirSobreNAjax',
@@ -108,3 +109,4 @@ function MostrarPagina(ID, numInicio) {
             }
         });
 }
+

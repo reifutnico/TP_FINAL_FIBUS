@@ -34,16 +34,45 @@ public class HomeController : Controller
         return View("CambiarContra");
     }
 
-    /*[HttpPost]
-    public IActionResult ActualizarContra(string usuario, string contraseña) //seguir con esto, falta terminar el sp y perfeccionar la pantalla de CambiarContra
+    [HttpPost]
+    public IActionResult ActualizarContra(string usuario, string contraseña, string nuevacontraseña, string confirmarContraseña)
     {
-    int num = BD.CambiarContraseña(usuario,contraseña);
-    }*/
+    int num = BD.CambiarContraseña(usuario,contraseña,nuevacontraseña,confirmarContraseña);
+    if (num == 0)
+    {
+        return View("InicioSesion");
+    }
+    else if (num == -1)
+    {
+        ViewBag.MensajeErrorCAMBIARCONTRA = -1;
+        return View("CambiarContra");
+    }
+    else if (num == -2) 
+    {
+        ViewBag.MensajeErrorCAMBIARCONTRA = -2;
+        return View("CambiarContra");
+    }
+     else if (num == -3) 
+    {
+        ViewBag.MensajeErrorCAMBIARCONTRA = -3;
+        return View("CambiarContra");
+    }
+         else if (num == -4) 
+    {
+        ViewBag.MensajeErrorCAMBIARCONTRA = -4;
+        return View("CambiarContra");
+    }
+    else
+    {
+        return View("CambiarContra");
+    }
+    }
 
 
     [HttpPost]
-    public IActionResult Registro(string usuario, string contraseña, string mail){
-    int num = BD.Registro(usuario, contraseña, mail);
+    public IActionResult Registro(string usuario, string contraseña, string confirmarContraseña, string mail)
+    {
+    int num = BD.Registro(usuario, contraseña, confirmarContraseña, mail);
     
     if (num == 0)
     {
@@ -51,12 +80,32 @@ public class HomeController : Controller
     }
     else if (num == -1)
     {
-        ViewBag.MensajeError = -1;
+        ViewBag.MensajeErrorREGISTRARSE = -1;
         return View("Registrarse");
     }
     else if (num == -2) 
     {
-        ViewBag.MensajeError = -2;
+        ViewBag.MensajeErrorREGISTRARSE = -2;
+        return View("Registrarse");
+    }
+     else if (num == -3) 
+    {
+        ViewBag.MensajeErrorREGISTRARSE = -3;
+        return View("Registrarse");
+    }
+     else if (num == -4) 
+    {
+        ViewBag.MensajeErrorREGISTRARSE = -4;
+        return View("Registrarse");
+    }
+      else if (num == -5) 
+    {
+        ViewBag.MensajeErrorREGISTRARSE = -5;
+        return View("Registrarse");
+    }
+         else if (num == -6) 
+    {
+        ViewBag.MensajeErrorREGISTRARSE = -6;
         return View("Registrarse");
     }
     else

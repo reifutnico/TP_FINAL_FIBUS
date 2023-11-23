@@ -16,21 +16,21 @@ public class BD
         return correcto;
     }
 
-    public static int Registro(string usuario, string contraseña, string mail){
+    public static int Registro(string usuario, string contraseña, string confirmarContraseña, string mail){
         int num=0;    
         using (SqlConnection db= new SqlConnection(_connectionstring)){
-            string sql ="EXEC RegistrarseUsuario @u,@c,@e";
-            num=db.QueryFirstOrDefault<int>(sql, new{u=usuario,c=contraseña,e=mail});
+            string sql ="EXEC RegistrarseUsuario @u,@c,@ce,@e";
+            num=db.QueryFirstOrDefault<int>(sql, new{u=usuario,c=contraseña,ce=confirmarContraseña,e=mail});
         }
             return num;
     } 
 
-    public static int CambiarContraseña(string Nombre, string Contraseña)
+    public static int CambiarContraseña(string usuario, string contraseña, string nuevacontraseña, string confirmarContraseña)
     {
         int num = 0;
         using(SqlConnection db = new SqlConnection(_connectionstring)){
-            string sql="EXEC SP_CambiarContraseña @pUsername, @pContraseña";
-            num = db.QueryFirstOrDefault<int>(sql, new{pUsername=Nombre,pContraseña=Contraseña});
+            string sql="EXEC SP_CambiarContraseña @pUsername, @pContraseña, @pNuevacontraseña, @pConfirmarContra";
+            num = db.QueryFirstOrDefault<int>(sql, new{pUsername=usuario,pContraseña=contraseña, pNuevacontraseña=nuevacontraseña, pConfirmarContra=confirmarContraseña});
         }
         return num;
     }
