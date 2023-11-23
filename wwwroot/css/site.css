@@ -44,15 +44,42 @@ footer {
 /*LOGIN*/
 /*LOGIN*/
 .container {
-  max-width: 350px;
+  width: 150px;
   height: 350px;
-  margin-top: 240px;
+  margin-top: 10%;
   /* Ajusta el margen izquierdo para moverlo hacia la izquierda */
   margin-left: 10%; /* Puedes ajustar este valor según sea necesario */
   padding: 50px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
+.pagina-inicio h1{
+  margin-right: 350px;
+  margin-bottom: 50px;
+}
+.UYC{
+  width: 350px;
+  margin-left: 23%;
+}
+
+h3{
+  margin-bottom: 20px;
+}
+.Formulario{
+  margin-top: 30px;
+}
+.Opciones{
+  margin-top: 50px;
+  margin-right: 350px;
+}
+.BotonLogin{
+  margin-right: 350px;
+}
+
+.MSJ-error {
+  color: red;
+}
+
 
 /* Resto de tus estilos */
 
@@ -75,6 +102,12 @@ a {
 }
 
 /*REGISTRO*/
+.registro{
+  height: 100vh;
+  background-image: url(/img/fondo.jpg);
+  background-size: cover;
+  background-position: center;
+}
 input[type=submit]:hover {
   background-color: #45a049;
 }
@@ -89,14 +122,26 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
+.registro form{
+  margin-right: 18%;
+  width: 350px;
+  margin-top: 140px;
+}
+.registro .BotonLogin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+} 
 .col-25 {
   float: left;
   width: 25%;
   margin-top: 6px;
 }
 .col-75 {
+  
   float: left;
-  width: 75%;
+  max-width: 125px;
   margin-top: 6px;
 }
 .row::after {

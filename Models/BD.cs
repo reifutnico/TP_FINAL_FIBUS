@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=.;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -16,22 +16,23 @@ public class BD
         return correcto;
     }
 
-    public static void Registro(string usuario, string contraseña, string mail){
-
+    public static int Registro(string usuario, string contraseña, string mail){
+        int num=0;    
         using (SqlConnection db= new SqlConnection(_connectionstring)){
             string sql ="EXEC RegistrarseUsuario @u,@c,@e";
-            db.Execute(sql, new{u=usuario,c=contraseña,e=mail});
+            num=db.QueryFirstOrDefault<int>(sql, new{u=usuario,c=contraseña,e=mail});
         }
+            return num;
     } 
 
     public static int CambiarContraseña(string Nombre, string Contraseña)
     {
-        int resultado = 0;
+        int num = 0;
         using(SqlConnection db = new SqlConnection(_connectionstring)){
             string sql="EXEC SP_CambiarContraseña @pUsername, @pContraseña";
-            resultado = db.QueryFirstOrDefault<int>(sql, new{pUsername=Nombre,pContraseña=Contraseña});
+            num = db.QueryFirstOrDefault<int>(sql, new{pUsername=Nombre,pContraseña=Contraseña});
         }
-        return resultado;
+        return num;
     }
 
     public static Usuario GetUsuarioByNombre(string Nombre){

@@ -20,7 +20,7 @@ public class HomeController : Controller
         }
 
         else{
-            ViewBag.ErrorInicio = "Contraseña o usuario incorrectos. Intente otra vez.";
+            ViewBag.MensajeError = true;
             return View("InicioSesion");
         }
     }
@@ -29,12 +29,42 @@ public class HomeController : Controller
         return View("Registrarse");
     }
 
-    [HttpPost]
-    public IActionResult Registro(string usuario, string contraseña, string mail)
+    
+    public IActionResult CambiarContraseña(){
+        return View("CambiarContra");
+    }
+
+    /*[HttpPost]
+    public IActionResult ActualizarContra(string usuario, string contraseña) //seguir con esto, falta terminar el sp y perfeccionar la pantalla de CambiarContra
     {
-        BD.Registro(usuario, contraseña, mail);
+    int num = BD.CambiarContraseña(usuario,contraseña);
+    }*/
+
+
+    [HttpPost]
+    public IActionResult Registro(string usuario, string contraseña, string mail){
+    int num = BD.Registro(usuario, contraseña, mail);
+    
+    if (num == 0)
+    {
         return View("InicioSesion");
     }
+    else if (num == -1)
+    {
+        ViewBag.MensajeError = -1;
+        return View("Registrarse");
+    }
+    else if (num == -2) 
+    {
+        ViewBag.MensajeError = -2;
+        return View("Registrarse");
+    }
+    else
+    {
+        return View("Registrarse");
+    }
+}
+    
 
     public IActionResult Album(int id){
         Actual.idUsuario=id;    
@@ -50,6 +80,12 @@ public class HomeController : Controller
         ViewBag.Sobres = BD.ObtenerSobres();
         ViewBag.Usuario = user;
         return View();
+    }
+
+    public IActionResult ComprarSobres(int precio){
+      BD.ComprarSobres(Actual.idUsuario,precio);
+      Actual.Monedas-=precio;
+      return (RedirectToAction("AbrirSobres"));
     }
 
     public IActionResult Inventario(){
@@ -84,6 +120,8 @@ public IActionResult AbrirSobreNAjax(int id)
         ViewBag.Figuritas = BD.obtenerFiguritas();
         return ViewBag.Figuritas;
     }
+
+
 // PARA VENDER LA FIGURITA
     public IActionResult VenderFigu(int precio, int idFigurita){
         BD.VenderFigurita(Actual.idUsuario,precio, idFigurita);
@@ -91,9 +129,5 @@ public IActionResult AbrirSobreNAjax(int id)
         return (RedirectToAction("Repetidas"));
     }
 
-        public IActionResult ComprarSobres(int precio){
-        BD.ComprarSobres(Actual.idUsuario,precio);
-        Actual.Monedas-=precio;
-        return (RedirectToAction("AbrirSobres"));
-    }
+
 }

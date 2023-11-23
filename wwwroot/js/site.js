@@ -1,4 +1,14 @@
 ﻿
+function showPassword() {
+    const passwordField = document.getElementById('Contraseña');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+    } else {
+        passwordField.type = 'password';
+    }
+}
+
+
 function validatePassword() {
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
@@ -28,6 +38,8 @@ function validatePassword() {
         confirmacion.style.color = "red";
         confirmacion.innerHTML = "Las contraseñas no coinciden";
     }
+
+    
 }
 
 
