@@ -69,6 +69,20 @@ public class BD
         }
     }
 
+    public static List<Figuritas> SeparaFiguritasEquipo(int equipo){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC SP_SepararFiguritasPorEquipo @pEquipo";
+            return db.Query<Figuritas>(sql, new{pEquipo=equipo}).ToList();
+        }
+    }
+
+    public static List<Figuritas> ObtenerInventarioPaises(int id, int equipo){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "EXEC ObtenerInventarioxPaises @user, @pEquipo";
+            return db.Query<Figuritas>(sql, new{user=id,pEquipo=equipo}).ToList();
+        }
+    }
+
     public static List<Sobres> ObtenerSobres(){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC ObtenerSobres";

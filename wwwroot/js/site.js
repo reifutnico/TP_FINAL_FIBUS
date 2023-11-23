@@ -1,4 +1,6 @@
 ﻿
+
+
 //Inicio sesion
 
 function showPassword() {
@@ -81,32 +83,5 @@ function AbrirSobreNormal(ID) {
             $("#figuritasObtenidas").html(temp);
         }
     });
-}
-
-function MostrarPagina(ID, numInicio) {
-    let i = 0;
-
-    $.ajax(
-        {
-            url: '/Home/MostrarPagina',
-            type: 'POST',
-            dataType: 'JSON',
-            data: { id: ID },
-            success: function (response) {
-                if (32 == numInicio) {
-                    $("#carta7").attr("style", "opacity: 0;")
-                    $("#carta8").attr("style", "opacity: 0;")
-                }
-                else{
-                    $("#carta7").attr("style", "opacity: 1;")
-                    $("#carta8").attr("style", "opacity: 1;")
-                }
-                response.forEach(element => {
-                    i++;
-                    $("#NombreJugador" + i).html(response[numInicio].numero);
-                    numInicio++;
-                });
-            }
-        });
 }
 

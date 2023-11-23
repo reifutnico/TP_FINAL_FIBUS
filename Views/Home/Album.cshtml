@@ -16,48 +16,8 @@
     </nav>
 </header>
 
-
-<div class="parent" id="pagina">
-    <div class="carta 1">
-        <p id="NombreJugador1">0</p>
-    </div>
-
-    <div class="carta 2">
-        <p id="NombreJugador2">1</p>
-    </div>
-
-    <div class="carta 3">
-        <p id="NombreJugador3">2</p>
-    </div>
-
-    <div class="carta 4">
-        <p id="NombreJugador4">3</p>
-    </div>
-
-    <div class="carta 5">
-        <p id="NombreJugador5">4</p>
-    </div>
-
-    <div class="carta 6">
-        <p id="NombreJugador6">5</p>
-    </div>
-
-    <div id="carta7" class="carta 7">
-        <p id="NombreJugador7">6</p>
-    </div>
-
-    <div id="carta8" class="carta 8">
-        <p id="NombreJugador8">7</p>
-        <button type="button" onclick=""></button>
-    </div>
-</div>
-
-<div class="controlador">
-    <button type="button" onclick="MostrarPagina(@ViewBag.Usuario.IdUsuario, 0)">Pagina 1</button>
-    <button type="button" onclick="MostrarPagina(@ViewBag.Usuario.IdUsuario, 8)">Pagina 2</button>
-    <button type="button" onclick="MostrarPagina(@ViewBag.Usuario.IdUsuario, 16)">Pagina 3</button>
-    <button type="button" onclick="MostrarPagina(@ViewBag.Usuario.IdUsuario, 24)">Pagina 4</button>
-    <button type="button" onclick="MostrarPagina(@ViewBag.Usuario.IdUsuario, 32)">Pagina 5</button>
-</div>
-
+<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 1})'>Pagina 1</a></button>
+<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 2})'>Pagina 2</a></button>
+<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 3})'>Pagina 3</a></button>
+<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 4})'>Pagina 4</a></button>
 

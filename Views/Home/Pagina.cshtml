@@ -1,0 +1,24 @@
+<body id="pagina">
+
+<button class="button" style="vertical-align:middle"><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'><span>Volver al Album</span></a></button>
+
+<div class="figuritas">
+  @foreach(var item2 in ViewBag.JugadoresPaises){
+    <div class="figurita">
+      <div class="cuadrado">
+        <h1>@item2.Numero</h1>
+        <h2>@item2.Nombre</h2>
+        <h2>@item2.Apellido</h2>
+      @foreach(var item in ViewBag.InventarioPaises){
+        @if(item.Nombre == item2.Nombre)
+        {
+          <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" />
+        }
+      }
+    </div>
+</div>
+    
+  }
+</div>
+
+

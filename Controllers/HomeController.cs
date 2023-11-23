@@ -144,7 +144,7 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Repetidas(){
+public IActionResult Repetidas(){
         Usuario user= BD.GetUsuarioByID(Actual.idUsuario);
         Actual.Monedas=user.Monedas;
         ViewBag.Usuario=user;
@@ -152,31 +152,32 @@ public class HomeController : Controller
         return View();
     }
     
-public IActionResult AbrirSobrePAjax(int id)
-{
+public IActionResult AbrirSobrePAjax(int id){
     var figuritas = BD.AbrirSobreP(id);
-    return Json(figuritas);
-}
+    return Json(figuritas);}
 
-public IActionResult AbrirSobreNAjax(int id)
-{
+
+public IActionResult AbrirSobreNAjax(int id){
     var figurita = BD.AbrirSobreN(id);
-    return Json(figurita);
-}
+    return Json(figurita);}
 
-    public List<Figuritas> MostrarPagina(int id)
-    {
-        ViewBag.Figuritas = BD.obtenerFiguritas();
-        return ViewBag.Figuritas;
-    }
 
 
 // PARA VENDER LA FIGURITA
-    public IActionResult VenderFigu(int precio, int idFigurita){
+public IActionResult VenderFigu(int precio, int idFigurita){
         BD.VenderFigurita(Actual.idUsuario,precio, idFigurita);
         Actual.Monedas+=precio;
         return (RedirectToAction("Repetidas"));
-    }
+}
 
+
+public IActionResult Pagina(int id, int equipo){
+        Actual.idUsuario=id;    
+        Usuario user = BD.GetUsuarioByID(id);
+        ViewBag.Usuario = user;
+        ViewBag.JugadoresPaises = BD.SeparaFiguritasEquipo(equipo);
+        ViewBag.InventarioPaises = BD.ObtenerInventarioPaises(id,equipo);
+        return View();
+}
 
 }
