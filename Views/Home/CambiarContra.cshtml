@@ -1,10 +1,12 @@
 @{
     ViewData["Title"] = "ActualizarContraseña";
 }
-<div class="registro" style="display: flex; justify-content: center;">
+<link rel="stylesheet" href="~/css/registro.css">
+<div class="registro">
 <form method="post" action='@Url.Action("ActualizarContra")' autocomplete="off">
 
     <div class = "container">
+        <a href='@Url.Action("InicioSesion")'><img src="~/img/flecha.png" alt="Volver al Login" style="vertical-align:middle"></a>
         <h2>Actualizar Contraseña</h2>
         <div class="row">
                 <div class="col-25">
@@ -69,5 +71,4 @@
                 <strong>Cuidado!</strong> Confirmación de contraseña fallida 
             </div>}
             
-<button class="button" style="vertical-align:middle"><a href='@Url.Action("InicioSesion")'><span>Volver al Login</span></a></button>
 </div>

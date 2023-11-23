@@ -102,54 +102,6 @@ a {
   font-size: 12px;
 }
 
-/*REGISTRO*/
-.registro{
-  height: 100vh;
-  background-image: url(/img/fondo.jpg);
-  background-size: cover;
-  background-position: center;
-}
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-input[type=text], select, textarea, input[type=password], input[type=date], input[type=email] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-.registro form{
-  margin-right: 18%;
-  width: 350px;
-  margin-top: 140px;
-}
-.registro .BotonLogin{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-} 
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-.col-75 {
-  
-  float: left;
-  max-width: 125px;
-  margin-top: 6px;
-}
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 
 /*BIENVENIDA*/
