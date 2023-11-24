@@ -140,6 +140,7 @@ public class HomeController : Controller
     public IActionResult Inventario(){
         Usuario user= BD.GetUsuarioByID(Actual.idUsuario);
         ViewBag.Usuario=user;
+        ViewBag.Figuritas= BD.obtenerFiguritas();
         ViewBag.Inventario= BD.ObtenerInventario(Actual.idUsuario);
         return View();
     }

@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Inventario";
 }
+<link rel="stylesheet" href="~/css/inventario.css">
 
 <header>
     <nav>
@@ -16,13 +17,16 @@
     </nav>
 </header>
 
-<div class="figuritas">
-    @foreach(var item in ViewBag.Inventario){
-        <div class="figurita">
-            <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" class="img-figurita" />
-            <h1>@item.Nombre</h1> 
-            <h1>@item.Apellido</h1>
-        </div>
+<div class="Circulo">
+  @foreach(var figurita in ViewBag.Figuritas){
+    var encontrado = false;
+    foreach(var inventario in ViewBag.Inventario){
+      if(figurita.IdFigurita == inventario.IdFigurita){
+        encontrado = true;
+      }
     }
+    <div class="@(encontrado ? "Circulo_Gris" : "Circulo_Blanco")" >
+      <h1>@figurita.Numero</h1> 
+    </div>
+  }
 </div>
-

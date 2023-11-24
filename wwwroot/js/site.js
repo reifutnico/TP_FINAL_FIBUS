@@ -1,6 +1,4 @@
 ﻿
-
-
 //Inicio sesion
 
 function showPassword() {
