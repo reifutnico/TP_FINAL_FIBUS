@@ -42,6 +42,9 @@ function validatePassword() {
         confirmacion.innerHTML = "Las contraseñas no coinciden";
     }
 }
+/*Abrir sobres*/
+
+//premium - 5 figus
 function AbrirSobrePremium(ID) {
     $.ajax({
         url: '/Home/AbrirSobrePAjax',
@@ -80,7 +83,7 @@ function AbrirSobreNormal(ID) {
 }
 
 
-    function AbrirSobreModal(opcion, idUsuario) {
+function AbrirSobreModal(opcion, idUsuario) {
         $.ajax({
             url: '/Home/AbrirModalSobre',
             data: { opcion: opcion },
@@ -102,9 +105,7 @@ function AbrirSobreNormal(ID) {
             }
         });
 
-/*Abrir sobres*/
 
-//premium - 5 figus
 
 }
 
