@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=.;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -89,6 +89,7 @@ public class BD
             return db.Query<Sobres>(sql).ToList();
         }
     }
+
         public static List<Figuritas> ObtenerRepes(int id){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "EXEC SP_Repetidas @user";

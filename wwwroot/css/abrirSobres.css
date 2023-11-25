@@ -1,0 +1,144 @@
+/* Estilos para los modals */
+.modal-content {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+/* Estilos para las imágenes dentro de .modal-content */
+.modal-content img {
+    /* Aquí puedes añadir tus estilos para las imágenes */
+    max-width: 100%; /* Por ejemplo, limitar el ancho al contenedor */
+    border-radius: 5px; /* Agregar un borde redondeado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregar una sombra sutil */
+}
+
+
+/* Para la cabecera */
+/* Para la cabecera */
+/* Para la cabecera */
+.modal-header {
+    background-image: linear-gradient(135deg, #8b6e1f, rgb(248, 244, 16)); /* Gradiente dorado más oscuro */
+    box-shadow: 0 0 8px rgba(176, 137, 39, 0.8); /* Resplandor menos intenso */
+    color: #fff; /* Color del texto */
+    border-top-left-radius: 10px; /* Redondeado en la esquina superior izquierda */
+    border-top-right-radius: 10px; /* Redondeado en la esquina superior derecha */
+}
+
+/* Para el pie */
+.modal-footer {
+    background-image: linear-gradient(135deg, rgb(226, 223, 19), #8b6e1f); /* Gradiente dorado más oscuro */
+    box-shadow: 0 0 8px rgba(176, 137, 39, 0.8); /* Resplandor menos intenso */
+    border-bottom-left-radius: 10px; /* Redondeado en la esquina inferior izquierda */
+    border-bottom-right-radius: 10px; /* Redondeado en la esquina inferior derecha */
+}
+
+/* Para el encabezado del sobre normal */
+.modal-content.sobre-normal .modal-header {
+    background-color: #999; /* Gris */
+    color: #fff; /* Color del texto */
+    border-top-left-radius: 10px; /* Redondeado en la esquina superior izquierda */
+    border-top-right-radius: 10px; /* Redondeado en la esquina superior derecha */
+}
+
+/* Para el pie de página del sobre normal */
+.modal-content.sobre-normal .modal-footer {
+    background-color: #999; /* Gris */
+    border-bottom-left-radius: 10px; /* Redondeado en la esquina inferior izquierda */
+    border-bottom-right-radius: 10px; /* Redondeado en la esquina inferior derecha */
+}
+
+
+
+.modal-body {
+    padding: 20px;
+}
+
+
+/* Estilos para los botones */
+.btn-primary {
+    background-color: #3498db; /* Color de fondo del botón principal */
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #95a5a6; /* Color de fondo del botón secundario */
+    border: none;
+}
+
+/* Estilos específicos para la imagen en el modal */
+#fotoModal {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+}
+
+/* Otros estilos específicos para los textos y elementos */
+h1, h2, h3 {
+    color: #2c3e50; /* Color del texto principal */
+    font-family: 'Arial', sans-serif; /* Tipo de fuente */
+}
+
+p {
+    color: #34495e; /* Color del texto secundario */
+}
+
+/* Estilos mejorados para los botones */
+.btn-primary,
+.btn-secondary {
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+
+    /* Estilos específicos para los botones principales y secundarios */
+    &.btn-primary {
+        background-color: #3498db; /* Color de fondo del botón principal */
+    }
+
+    &.btn-secondary {
+        background-color: #e74c3c; /* Color de fondo del botón secundario */
+    }
+
+    &:hover {
+        background-color: #2980b9; /* Color de fondo en hover del botón principal */
+    }
+
+    &:hover.btn-secondary {
+        background-color: #c0392b; /* Color de fondo en hover del botón secundario */
+    }
+}
+
+/* Estilos específicos para el texto de los botones */
+.btn-primary,
+.btn-secondary {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Estilos para el botón "Comprar" en modal premium */
+#buttonPremium, #buttonNormal {
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #3498db; /* Color de fondo del botón */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#buttonNormal:hover {
+    background-color: #2980b9; /* Color de fondo en hover */
+}
+
+#buttonPremium:hover {
+    background-color: #2980b9; /* Color de fondo en hover */
+}
+
+/* Estilos para la imagen del sobre */

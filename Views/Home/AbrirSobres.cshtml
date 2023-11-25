@@ -12,41 +12,77 @@
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
             <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+  </header>
 
-        </ul>
-    </nav>
-</header>
-
-@* <div class="container-countdown" id="countdown">
-  <div class="countdown">
-      <h1 class="tiempo-texto">Tiempo restante</h1>
-      <div>
-          <p class="cuadros" id="minutes"></p>
-      </div>
-      :
-      <div>
-          <p class="cuadros" id="seconds"></p>
-      </div>
-  </div>
-</div> *@
-
+<link rel="stylesheet" href="~/css/abrirSobres.css">
 
 <div style="display: flex; justify-content: space-around;">
-  <div class="sobre">
-    <button id="buttonPremium" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobrePremium(@ViewBag.Usuario.IdUsuario)">Abrir sobre Premium</button>
-    <h6>Precio: 8</h6>
-  </div>
 
-  <div class="sobre">
-    <button id="buttonNormal" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobreNormal(@ViewBag.Usuario.IdUsuario)">Abrir sobre Normal</button>
-    <h6>Precio: 4</h6>
+<img src="~/img/SobreP.jpeg" alt="Imagen del sobre" />
+<img src="~/img/SobreN.png" alt="Imagen del sobre" />
+</div>
+
+<div style="display: flex; justify-content: space-around;">
+<!-- Button trigger modal -->
+<button type="button" onclick="AbrirSobreModal(0, @ViewBag.Usuario.IdUsuario)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Abrir sobre premium
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tituloModal">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <img id="fotoModal" src="#"></img>
+      <div class="modal-body">
+        <h2>Descripcion: </h2>
+        <p id="descripcionModal"></p>
+        <h2>Cantidad:</h2>
+        <h3 id="candidadModal"></h3>
+        <h1>Precio: </h1>
+        <p1 id="valorModal"></p1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button id="buttonPremium" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobrePremium(@ViewBag.Usuario.IdUsuario)">Comprar</button>
+      </div>
+    </div>
   </div>
 </div>
 
- @foreach(var item in ViewBag.Sobres){
-            <h3><a href='@Url.Action("ComprarSobres",new{Precio=item.Valor})'>Comprar por @item.Valor </a></h3>
-    }
+<!--Abrir sobre normal-->
+<!-- Button trigger modal -->
+<button type="button" onclick="AbrirSobreModal(1, @ViewBag.Usuario.IdUsuario)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Abrir sobre normal
+</button>
 
+<!-- Modal normal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tituloModal">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <img id="fotoModal" src="/img/SobreN.png" alt="SobreN">
+      <div class="modal-body">
+        <h2>Descripcion: </h2>
+        <p id="descripcionModal"></p>
+        <h2>Cantidad:</h2>
+        <h3 id="candidadModal"></h3>
+        <h1>Precio: </h1>
+        <p1 id="valorModal"></p1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button id="buttonNormal" type="button" data-bs-toggle="modal" data-bs-target="#ModalSobre" onclick="AbrirSobreNormal(@ViewBag.Usuario.IdUsuario)">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
    
 
@@ -60,6 +96,9 @@
     </div>
 </div> 
 
+</div>
+
 
 @* <script src="~/js/script.js" asp-append-version="true"></script> *@
 @* <script src="~/js/script2.js" asp-append-version="true"></script> *@
+

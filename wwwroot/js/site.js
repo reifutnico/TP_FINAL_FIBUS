@@ -42,10 +42,6 @@ function validatePassword() {
         confirmacion.innerHTML = "Las contraseñas no coinciden";
     }
 }
-
-/*Abrir sobres*/
-
-//premium - 5 figus
 function AbrirSobrePremium(ID) {
     $.ajax({
         url: '/Home/AbrirSobrePAjax',
@@ -81,5 +77,34 @@ function AbrirSobreNormal(ID) {
             $("#figuritasObtenidas").html(temp);
         }
     });
+}
+
+
+    function AbrirSobreModal(opcion, idUsuario) {
+        $.ajax({
+            url: '/Home/AbrirModalSobre',
+            data: { opcion: opcion },
+            type: 'POST',
+            dataType: 'JSON',
+            success: function (response) {
+                if (opcion == 1) {
+                    $("#buttonPremium").attr("id", "buttonNormal")
+                    $("#buttonNormal").attr("onclick", "AbrirSobreNormal(" + idUsuario + ")")
+                } else {
+                    $("#buttonNormal").attr("id", "buttonPremium")
+                    $("#buttonPremium").attr("onclick", "AbrirSobrePremium(" + idUsuario + ")")
+                }
+                $("#fotoModal").attr("src", response.foto)
+                $("#descripcionModal").html(response.descripcion)
+                $("#tituloModal").html(response.nombre)
+                $("#valorModal").html(response.valor)
+                $("#candidadModal").html(response.cantidad)
+            }
+        });
+
+/*Abrir sobres*/
+
+//premium - 5 figus
+
 }
 

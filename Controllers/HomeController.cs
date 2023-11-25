@@ -153,9 +153,11 @@ public IActionResult Repetidas(){
         return View();
     }
     
+
 public IActionResult AbrirSobrePAjax(int id){
     var figuritas = BD.AbrirSobreP(id);
     return Json(figuritas);}
+
 
 
 public IActionResult AbrirSobreNAjax(int id){
@@ -181,4 +183,13 @@ public IActionResult Pagina(int id, int equipo){
         return View();
 }
 
+    public Sobres AbrirModalSobre(int opcion){
+        Sobres sobres;
+        if(opcion == 0){
+        sobres = BD.ObtenerSobres()[1];
+        }else{
+        sobres = BD.ObtenerSobres()[0];
+        }
+        return sobres;
+    }
 }
