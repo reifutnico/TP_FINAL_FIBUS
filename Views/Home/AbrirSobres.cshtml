@@ -2,17 +2,20 @@
     ViewData["Title"] = "Abrir Sobres";
 }
 
-
 <header>
     <nav>
         <ul>
-            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
-            <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Album")'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
-            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
-  </header>
+            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+
+
+        </ul>
+    </nav>
+</header>
 
 <link rel="stylesheet" href="~/css/abrirSobres.css">
 
@@ -67,7 +70,7 @@
         <h1 class="modal-title fs-5" id="tituloModal">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <img id="fotoModal" src="/img/SobreN.png" alt="SobreN">
+      <img id="fotoModal" src="/img/SobreP.jpeg" alt="SobreN">
       <div class="modal-body">
         <h2>Descripcion: </h2>
         <p id="descripcionModal"></p>

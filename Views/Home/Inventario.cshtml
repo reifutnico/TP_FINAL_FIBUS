@@ -2,21 +2,20 @@
     ViewData["Title"] = "Inventario";
 }
 <link rel="stylesheet" href="~/css/inventario.css">
-
 <header>
     <nav>
         <ul>
-            <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
-            <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Album")'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
-            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+
 
         </ul>
     </nav>
 </header>
-
 <div class="Circulo">
   @foreach(var figurita in ViewBag.Figuritas){
     var encontrado = false;

@@ -61,6 +61,9 @@ function AbrirSobrePremium(ID) {
             $("#figuritasObtenidas").html(temp);
         }
     });
+    
+    RestarMonedas(8)
+    
 }
 
 //normal - 3 figus
@@ -80,8 +83,48 @@ function AbrirSobreNormal(ID) {
             $("#figuritasObtenidas").html(temp);
         }
     });
+    RestarMonedas(4)
+   
 }
 
+function GanarMonedas(p){
+    $.ajax({
+        url: '/Home/Recibir',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {precio:p},
+        success: function(response){
+            $("#lugarMonedas").html("Monedas: " + response)
+        }
+    })
+}
+
+function RestarMonedas(p){
+    $.ajax({
+        url: '/Home/Comprar',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {precio:p},
+        success: function(response){
+            $("#lugarMonedas").html("Monedas: " + response)
+        }
+    })
+}
+function Vender(id,precio){
+    $.ajax({
+        url: '/Home/ActualizarRepetidas',
+        data: {idFigu: id},
+        type: 'POST',
+        dataType: 'JSON',
+       error: function(){
+            console.log("aaaaa")
+            $("#" + id).remove()
+            GanarMonedas(precio)
+
+        }
+    });
+    
+}
 
 function AbrirSobreModal(opcion, idUsuario) {
         $.ajax({
@@ -104,8 +147,6 @@ function AbrirSobreModal(opcion, idUsuario) {
                 $("#candidadModal").html(response.cantidad)
             }
         });
-
-
 
 }
 

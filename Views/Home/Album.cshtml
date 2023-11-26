@@ -1,20 +1,21 @@
 @{
     ViewData["Title"] = "Album";
 }
-
 <header>
     <nav>
         <ul>
-           <li><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'>Album</a></li>
-            <li><a href='@Url.Action("AbrirSobres", new {id = ViewBag.Usuario.IdUsuario})'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Album")'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
             <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
-            <li><a href="#">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+
 
         </ul>
     </nav>
 </header>
+
 
 <button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 1})'>Pagina 1</a></button>
 <button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 2})'>Pagina 2</a></button>

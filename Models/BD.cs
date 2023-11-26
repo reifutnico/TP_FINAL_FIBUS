@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=.\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -117,10 +117,35 @@ public class BD
         }
     }
 
-    public static void ComprarSobres(int idUsuario, int precio){
+
+    public static void CambiarMonedas(int idUsuario,int monedas){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
-            string sql = "EXEC ComprarSobres @zprecio, @zidUsuario";
-            db.Execute(sql, new{zprecio=precio,zidusuario=Actual.idUsuario});
+            string sql = "update Usuario set Monedas = @m where Usuario.IdUsuario = @id";
+            db.Execute(sql, new{m=monedas,id=idUsuario});
         }
     }
-}
+
+        public static void CambiarRepetidas(int idInventario,int idFigu){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+        string sql = @"
+            DELETE t
+            FROM (
+                SELECT IdInventario, IdFigurita,
+                    ROW_NUMBER() OVER(PARTITION BY IdFigurita ORDER BY (SELECT NULL)) AS RowNum
+                FROM InventarioXFigus
+                WHERE IdInventario = @idI
+                    AND IdFigurita = @idF
+            ) AS t
+            WHERE t.RowNum > 1";
+            db.Execute(sql, new{idI=idInventario,idF=idFigu});
+        }
+    }
+        public static int ObtenerIdInventario(int idUsuario){
+        using (SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql = "select IdInventario from Inventario where IdUsuario = @idU";
+            return db.QueryFirstOrDefault<int>(sql, new{idU=idUsuario});
+        }
+    }
+    
+    
+    }

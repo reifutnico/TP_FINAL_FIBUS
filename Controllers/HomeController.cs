@@ -18,6 +18,8 @@ public class HomeController : Controller
         {
             Usuario user = BD.GetUsuarioByNombre(usuario);
             ViewBag.Usuario = user;
+            TempData["UsuarioActual"] = user.IdUsuario;
+            // Console.WriteLine(idUsuarioActual + "!!!");
             return RedirectToAction("Album", new { id = user.IdUsuario });
         }
         else
@@ -25,6 +27,15 @@ public class HomeController : Controller
             ViewBag.MensajeError = true;
             return View("InicioSesion");
         }
+    }
+
+    public void ActualizarRepetidas(int idFigu)
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
+        BD.CambiarRepetidas(idInventario, idFigu);
+        TempData["UsuarioActual"] = idUsuarioActual;
     }
 
     public IActionResult Registrarse()
@@ -38,7 +49,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult ActualizarContra(string usuario, string contraseña, string nuevacontraseña, string confirmarContraseña)
+    public IActionResult ActualizarContra(string usuario,string contraseña,string nuevacontraseña,string confirmarContraseña)
     {
         int num = BD.CambiarContraseña(usuario, contraseña, nuevacontraseña, confirmarContraseña);
         if (num == 0)
@@ -72,7 +83,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Registro(string usuario, string contraseña, string confirmarContraseña, string mail)
+    public IActionResult Registro(string usuario,string contraseña,string confirmarContraseña,string mail)
     {
         int num = BD.Registro(usuario, contraseña, confirmarContraseña, mail);
 
@@ -116,76 +127,105 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult Album(int id)
+    public IActionResult Album()
     {
-        Actual.idUsuario = id;
-        Usuario user = BD.GetUsuarioByID(id);
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         ViewBag.Usuario = user;
-        ViewBag.Inventario = BD.ObtenerInventario(id);
+        ViewBag.Usuario.Monedas = user.Monedas;
+        ViewBag.Inventario = BD.ObtenerInventario(idUsuarioActual);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
     }
 
-    public IActionResult AbrirSobres(int id)
+    public IActionResult AbrirSobres()
     {
-        Actual.idUsuario = id;
-        Usuario user = BD.GetUsuarioByID(id);
-        ViewBag.Sobres = BD.ObtenerSobres();
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         ViewBag.Usuario = user;
+        ViewBag.Sobres = BD.ObtenerSobres();
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
     }
 
     public IActionResult ComprarSobres(int precio)
     {
-        BD.ComprarSobres(Actual.idUsuario, precio);
-        Actual.Monedas -= precio;
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        ViewBag.Usuario = user;
+        TempData["UsuarioActual"] = idUsuarioActual;
         return (RedirectToAction("AbrirSobres"));
     }
 
     public IActionResult Inventario()
     {
-        Usuario user = BD.GetUsuarioByID(Actual.idUsuario);
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         ViewBag.Usuario = user;
         ViewBag.Figuritas = BD.obtenerFiguritas();
-        ViewBag.Inventario = BD.ObtenerInventario(Actual.idUsuario);
+        ViewBag.Inventario = BD.ObtenerInventario((int)TempData["UsuarioActual"]);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
+    }
+
+    public int Recibir(int precio)
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        int cantMonedas = user.Monedas + precio;
+
+        BD.CambiarMonedas(idUsuarioActual, cantMonedas);
+        TempData["UsuarioActual"] = idUsuarioActual;
+        return cantMonedas;
+    }
+
+    public int Comprar(int precio)
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        int cantMonedas = user.Monedas;
+        if (user.Monedas >= precio)
+            cantMonedas = user.Monedas - precio;
+        BD.CambiarMonedas(idUsuarioActual, cantMonedas);
+        TempData["UsuarioActual"] = idUsuarioActual;
+        return cantMonedas;
     }
 
     public IActionResult Repetidas()
     {
-        Usuario user = BD.GetUsuarioByID(Actual.idUsuario);
-        Actual.Monedas = user.Monedas;
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         ViewBag.Usuario = user;
-        ViewBag.Repetidas = BD.ObtenerRepes(Actual.idUsuario);
+        ViewBag.Repetidas = BD.ObtenerRepes((int)TempData["UsuarioActual"]);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
     }
 
     public IActionResult AbrirSobrePAjax(int id)
     {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
         var figuritas = BD.AbrirSobreP(id);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return Json(figuritas);
     }
 
     public IActionResult AbrirSobreNAjax(int id)
     {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
         var figurita = BD.AbrirSobreN(id);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return Json(figurita);
     }
 
-    // PARA VENDER LA FIGURITA
-    public IActionResult VenderFigu(int precio, int idFigurita)
-    {
-        BD.VenderFigurita(Actual.idUsuario, precio, idFigurita);
-        Actual.Monedas += precio;
-        return (RedirectToAction("Repetidas"));
-    }
 
     public IActionResult Pagina(int id, int equipo)
     {
-        Actual.idUsuario = id;
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
         Usuario user = BD.GetUsuarioByID(id);
         ViewBag.Usuario = user;
         ViewBag.JugadoresPaises = BD.SeparaFiguritasEquipo(equipo);
         ViewBag.InventarioPaises = BD.ObtenerInventarioPaises(id, equipo);
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
     }
 
