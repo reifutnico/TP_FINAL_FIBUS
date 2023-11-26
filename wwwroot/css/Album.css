@@ -1,0 +1,21 @@
+/* Establecer color de fondo vino tinto */
+body {
+    background-color: #6b2737;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mostrar imágenes del mismo tamaño y alineadas en línea */
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Establecer tamaño máximo para cada imagen */
+.container img {
+    max-width: 200px; /* Ancho máximo */
+    width: 150%; /* Para asegurar que no exceda el ancho máximo */
+    height: 70%; /* Mantener proporción */
+
+}

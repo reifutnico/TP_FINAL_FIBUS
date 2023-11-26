@@ -1,0 +1,49 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #6b2737;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el contenedor de las figuritas */
+.figuritas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define el tamaño mínimo y máximo de las figuritas */
+    gap: 10px; /* Espacio entre las figuritas */
+    position: relative; /* Establece posición relativa para que las figuras absolutas se posicionen correctamente */
+  }
+  
+  /* Estilos para cada figurita */
+  .figurita {
+    border: 1px solid #ccc; /* Borde para separar las figuritas */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Centra el contenido */
+    position: relative; /* Establece posición relativa para los elementos absolutos */
+  }
+  
+  /* Estilos para la imagen del jugador */
+  .figurita img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Permite que la imagen mantenga su proporción */
+    position: absolute; /* Establece posición absoluta para superponer la imagen */
+    top: 50%; /* Posiciona la imagen en la mitad vertical */
+    left: 50%; /* Posiciona la imagen en el centro horizontal */
+    transform: translate(-50%, -50%); /* Centra la imagen */
+    z-index: 2; /* Coloca la imagen en el frente */
+  }
+  /* Estilos para el cuadrado cuando no hay imagen */
+ /* Estilos para el cuadrado cuando no hay imagen */
+ .cuadrado {
+    width: 100%; /* Ajusta el tamaño del cuadrado */
+    height: 200px; /* Altura del cuadrado */
+    border: 1px solid #ccc; /* Borde para el cuadrado */
+    position: relative; /* Establece posición relativa para los elementos absolutos */
+  }
+  
+  /* Estilos para el nombre y número en el cuadrado */
+  .cuadrado h1,
+.cuadrado h2 {
+  margin: 5px 0;
+  position: relative; /* Cambia a posición relativa para que el z-index funcione */
+  z-index: 1; /* Asegura que el texto esté detrás de la imagen */
+}

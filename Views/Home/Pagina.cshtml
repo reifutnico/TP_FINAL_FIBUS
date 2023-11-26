@@ -1,5 +1,10 @@
 
-<button class="button" style="vertical-align:middle"><a href='@Url.Action("Album", new {id = ViewBag.Usuario.IdUsuario})'><span>Volver al Album</span></a></button>
+<link rel="stylesheet" href="~/css/pagina.css">
+
+
+<a href='@Url.Action("Album")'><img src="~/img/flecha.png" alt="Volver al Login" style="vertical-align:middle; width: 200px; height: 200px;"></a>
+
+
 
 <div class="figuritas">
   @foreach(var item2 in ViewBag.JugadoresPaises){
@@ -13,6 +18,7 @@
         {
           <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" />
         }
+
       }
     </div>
 </div>

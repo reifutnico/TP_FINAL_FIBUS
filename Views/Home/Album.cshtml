@@ -15,11 +15,13 @@
         </ul>
     </nav>
 </header>
+<link rel="stylesheet" href="~/css/Album.css">
 
 
-<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 1})'>Pagina 1</a></button>
-<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 2})'>Pagina 2</a></button>
-<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 3})'>Pagina 3</a></button>
-<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 4})'>Pagina 4</a></button>
-<button type="button" ><a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 5})'>Pagina 5</a></button>
-
+    <div class="container">
+        <a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 1})'><img src="~/img/escudos/escDiar.png" alt="diarco"></a>
+        <a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 2})'><img src="~/img/escudos/escArg.png" alt="diarco"></a>
+        <a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 3})'><img src="~/img/escudos/escEcu.png" alt="diarco"></a>
+        <a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 4})'><img src="~/img/escudos/escUru.png" alt="diarco"></a>
+        <a href='@Url.Action("Pagina", new {id = ViewBag.Usuario.IdUsuario, equipo = 5})'><img src="~/img/jugadores/Icons.png" alt="diarco"></a>
+    </div>
