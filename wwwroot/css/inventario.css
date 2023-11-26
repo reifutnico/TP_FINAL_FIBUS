@@ -1,10 +1,33 @@
 /* Estilos para los círculos */
+.Circulo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  height: 100vh; /* Ocupa todo el alto de la ventana */
+  justify-content: center; /* Centra los círculos horizontalmente */
+  align-items: center; /* Centra los círculos verticalmente */
+  padding: 20px; /* Añade espacio entre los círculos y los bordes de la ventana */
+}
+
+.Circulo > div {
+  width: 100px; /* Tamaño fijo para los círculos */
+  height: 100px; /* Tamaño fijo para los círculos */
+  border-radius: 50%; /* Borde redondeado para formar un círculo */
+  display: flex; /* Para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin: 10px; /* Espacio entre cada círculo */
+  color: black; /* Color del número dentro del círculo blanco */
+  border: 2px solid black; /* Borde de 2px sólido negro */
+}
+
 
 
 .Circulo
 {
 display: flex;
 flex-wrap: wrap;
+background-color: #6b2737;
 }
   .Circulo_Blanco,
   .Circulo_Gris {
@@ -16,7 +39,7 @@ flex-wrap: wrap;
     margin-right: 10px; /* Espacio entre cada círculo */
     background-color: white; /* Color de fondo blanco */
     color: black; /* Color del número dentro del círculo blanco */
-    border: 2px solid black; /* Borde de 2px sólido negro */
+    border: 30px solid black; /* Borde de 2px sólido negro */
     flex-direction: row;
 
   }
@@ -26,12 +49,12 @@ flex-wrap: wrap;
 .Circulo_Blanco {
   background-color: white; /* Color de fondo blanco */
   color: black; /* Color del número dentro del círculo blanco */
-  border: 2px solid black; /* Borde de 2px sólido negro */
+  border: 3px solid black; /* Borde de 2px sólido negro */
 }
 
 /* Estilos específicos para el círculo gris */
 .Circulo_Gris {
-  background-color: #ccc; /* Color de fondo gris */
+  background-color: #adadad; /* Color de fondo gris */
   color: black; /* Color del número dentro del círculo gris */
   border: 2px solid black; /* Borde de 2px sólido negro */
 }

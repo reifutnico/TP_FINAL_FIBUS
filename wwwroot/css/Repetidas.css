@@ -1,0 +1,54 @@
+
+
+
+.figuritas {
+    background-color: #6b2737; /* Color vino tinto */
+    padding: 20px; /* Añadir espaciado interno */
+  }
+  
+    
+  .figurita {
+    
+    display: inline-block;
+    text-align: center; /* Ajustar el texto a la izquierda */
+    width: 200px; /* Ancho deseado */
+    padding: 15px;
+    margin: 3%;
+    border-radius: 8px;
+    background-color: #e5dd4e; /* Color de fondo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones */
+
+  }
+  
+
+
+  .figurita img {
+    width: 100%; /* Ajustar la imagen al tamaño del contenedor */
+    height: auto;
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .figurita h1,
+  .figurita h2 {
+    margin: 5px 0;
+  }
+  
+  /* Estilos para el botón de vender */
+  .figurita button {
+    padding: 10px 20px; /* Aumentar el padding para hacer el botón más grande */
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición de color al pasar el mouse */
+  }
+  
+  .figurita button:hover {
+    background-color: #45a049; /* Cambio de color al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: translateY(-2px); /* Efecto de elevación */
+  }
+  

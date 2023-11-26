@@ -1,6 +1,11 @@
+body {
+    background-color: #6b2737; /* Color vino tinto */
+    margin: 0; /* Asegurar que no haya márgenes por defecto */
+    padding: 0; /* Asegurar que no haya relleno por defecto */
+}
 /* Estilos para los modals */
 .modal-content {
-    background-color: #fff; /* Fondo blanco */
+    background-color: #6b2737; /* Fondo blanco */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
 }
@@ -74,12 +79,12 @@
 
 /* Otros estilos específicos para los textos y elementos */
 h1, h2, h3 {
-    color: #2c3e50; /* Color del texto principal */
+    color: #ffffff; /* Color del texto principal */
     font-family: 'Arial', sans-serif; /* Tipo de fuente */
 }
 
 p {
-    color: #34495e; /* Color del texto secundario */
+    color: #ffffff; /* Color del texto secundario */
 }
 
 /* Estilos mejorados para los botones */
@@ -139,6 +144,24 @@ p {
 
 #buttonPremium:hover {
     background-color: #2980b9; /* Color de fondo en hover */
+}
+
+.sobres-container button {
+    padding: 15px 30px; /* Aumentar el padding para aumentar el tamaño */
+    margin-top: 20px; /* Agregar espacio superior */
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px; /* Aumentar el tamaño del texto */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Estilos para los botones en hover */
+.sobres-container button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
 /* Estilos para la imagen del sobre */
