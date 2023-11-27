@@ -1,7 +1,6 @@
 @{
     ViewData["Title"] = "Album";
 }
-
 <header>
     <nav>
         <ul>
@@ -9,11 +8,18 @@
             <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
-            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li>
-            <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li> 
         </ul>
+        <div class="imagenesNav">
+            <ul>
+                <button type="button" onclick="GanarMonedasVideos()" class="botonVideos">Ganar Monedas <img src="~/img/Youtu.png"></button>
+                <li><a id="lugarMonedas">@ViewBag.Usuario.Monedas <img src="~/img/moneda.png">  </a> </li>
+                <li><a href='@Url.Action("InicioSesion")'> <img src="~/img/salir.png"> </a></li>
+            </ul>
+        </div>
     </nav>
 </header>
+
+
 <link rel="stylesheet" href="~/css/Album.css">
 
 

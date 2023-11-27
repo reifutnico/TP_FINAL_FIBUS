@@ -60,12 +60,10 @@ function AbrirSobrePremium(ID) {
                 response.forEach(element => {
                 temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
                 });
-                $("#figuritasObtenidas").html(temp);
+                $("#figuritasObtenidas").html(`<h3>¡TUS FIGURITAS!</h3>` + temp);
 
             }else{
                 $("#figuritasObtenidas").html(`<h3>No tenes monedas suficientes!</h3>`);
-
-
                 }
             }
         }
@@ -91,7 +89,7 @@ function AbrirSobreNormal(ID) {
                 response.forEach(element => {
                 temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
                 });
-                $("#figuritasObtenidas").html(temp);
+                $("#figuritasObtenidas").html(`<h3>¡TUS FIGURITAS!</h3>` + temp);
 
             }else{
                 $("#figuritasObtenidas").html(`<h3>No tenes monedas suficientes!</h3>`);
@@ -110,10 +108,31 @@ function GanarMonedas(p){
         dataType: 'JSON',
         data: {precio:p},
         success: function(response){
-            $("#lugarMonedas").html("Monedas: " + response)
+            $("#lugarMonedas").html(response + '<img src="/img/moneda.png">');
         }
     })
 }
+function GanarMonedasVideos() {
+    // Lista de videos de YouTube
+    var videos = [
+        'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        'https://www.youtube.com/watch?v=D5GQ9br7voU'
+    ];
+    var randomIndex = Math.floor(Math.random() * videos.length);
+    var randomVideoURL = videos[randomIndex];
+    window.open(randomVideoURL, '_blank');
+    $.ajax({
+        url: '/Home/RecibirVideos',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {},
+        success: function(response) {
+            $("#lugarMonedas").html(response + '<img src="/img/moneda.png">');
+        }
+    });
+}
+
+
 
 function RestarMonedas(p){
     $.ajax({
@@ -122,7 +141,7 @@ function RestarMonedas(p){
         dataType: 'JSON',
         data: {precio:p},
         success: function(response){
-            $("#lugarMonedas").html("Monedas: " + response)
+            $("#lugarMonedas").html(response + '<img src="/img/moneda.png">');
         }
     })
 }
@@ -136,7 +155,6 @@ function Vender(id,precio){
             console.log("aaaaa")
             $("#" + id).remove()
             GanarMonedas(precio)
-
         }
     });
     

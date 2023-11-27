@@ -168,31 +168,76 @@ a {
 /* Menu */
 
 nav {
-  background-color: #5C1A1B; /* Color rojo vino tinto */
-  padding: 10px 0; /* Ajuste del espaciado */
+  background-color: #5C1A1B;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between; /* Coloca elementos al principio y al final */
+  align-items: center; /* Alinea verticalmente los elementos */
 }
 
 nav ul {
   display: flex;
-  justify-content: space-around;
-  margin: 0; /* Eliminamos el margen predeterminado */
-  padding: 0; /* Eliminamos el relleno predeterminado */
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 nav li {
-  list-style: none;
+  margin-right: 15px; /* Espaciado entre elementos del menú */
 }
+
 nav li a {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
-  padding: 8px 15px; /* Ajuste del espaciado para los enlaces */
-  border-radius: 5px; /* Bordes redondeados para los enlaces */
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  padding: 8px 40px;
+}
+#lugarMonedas {
+  color: white;
+}
+nav li a:hover {
+  background-color: #8C1C1D;
+}
+
+/* Estilos para la sección de imágenes */
+/* Estilos para la sección de imágenes */
+.imagenesNav {
+  display: flex;
+  align-items: center;
+}
+
+.imagenesNav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.imagenesNav li {
+  margin-right: 10px;
+}
+.imagenesNav button {
+  margin-right: 10px;
+}
+
+.imagenesNav img {
+  width: 30px; /* Modifica este valor según el tamaño deseado */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+.botonVideos {
+  background-color: #007bff; /* Azul */
+  color: white; /* Letra blanca */
+  border: none; /* Quita el borde */
+  padding: 1px 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   transition: background-color 0.3s ease; /* Efecto de transición suave */
 }
 
-nav li a:hover {
-  background-color: #8C1C1D; /* Color de fondo al pasar el mouse */
+.botonVideos:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el mouse */
 }
 
 header {

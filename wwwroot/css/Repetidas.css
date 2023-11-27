@@ -56,4 +56,15 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
     transform: translateY(-2px); /* Efecto de elevación */
   }
-  
+  /* Estilos para centrar el contenido y hacer el texto blanco */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Opcional: para ocupar toda la altura de la ventana */
+}
+
+.centered-content h1 {
+  color: white;
+  /* Otros estilos que desees aplicar */
+}

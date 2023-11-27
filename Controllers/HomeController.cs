@@ -179,6 +179,16 @@ public class HomeController : Controller
         return cantMonedas;
     }
 
+        public int RecibirVideos()
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        int cantMonedas = user.Monedas + 5;
+        BD.CambiarMonedas(idUsuarioActual, cantMonedas);
+        TempData["UsuarioActual"] = idUsuarioActual;
+        return cantMonedas;
+    }
+
     public int Comprar(int precio)
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];
