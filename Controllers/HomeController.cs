@@ -204,17 +204,33 @@ public class HomeController : Controller
     public IActionResult AbrirSobrePAjax(int id)
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        if (user.Monedas >= 8)
+        {
         var figuritas = BD.AbrirSobreP(id);
         TempData["UsuarioActual"] = idUsuarioActual;
         return Json(figuritas);
+        }else{
+        TempData["UsuarioActual"] = idUsuarioActual;
+        Console.WriteLine("a");
+        return Json(null);
+        }
     }
 
     public IActionResult AbrirSobreNAjax(int id)
     {
-        int idUsuarioActual = (int)TempData["UsuarioActual"];
-        var figurita = BD.AbrirSobreN(id);
+         int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        if (user.Monedas >= 4)
+        {
+        var figuritas = BD.AbrirSobreN(id);
         TempData["UsuarioActual"] = idUsuarioActual;
-        return Json(figurita);
+        return Json(figuritas);
+        }else{
+        TempData["UsuarioActual"] = idUsuarioActual;
+        Console.WriteLine("a");
+        return Json(null);
+        }
     }
 
 

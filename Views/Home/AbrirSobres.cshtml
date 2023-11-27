@@ -9,8 +9,8 @@
             <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
             <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
             <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
-            <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li>
-            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li> 
+            <li><a href="#" id="lugarMonedas">Monedas: @ViewBag.Usuario.Monedas</a> </li>
+            <li><a href='@Url.Action("InicioSesion")'>Cerrar sesion</a></li> 
         </ul>
     </nav>
 </header>
@@ -19,13 +19,13 @@
 <link rel="stylesheet" href="~/css/abrirSobres.css">
 
 <div class="Contenido"></div>
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around;margin-top:40px;">
 
 <img src="~/img/SobreP.jpeg" alt="Imagen del sobre" />
 <img src="~/img/SobreN.png" alt="Imagen del sobre" />
 </div>
 
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: space-around; margin-top:20px;">
 <!-- Button trigger modal -->
 <button type="button" onclick="AbrirSobreModal(0, @ViewBag.Usuario.IdUsuario)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Abrir sobre premium
@@ -39,7 +39,6 @@
         <h1 class="modal-title fs-5" id="tituloModal">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <img id="fotoModal" src="#"></img>
       <div class="modal-body">
         <h2>Descripcion: </h2>
         <p id="descripcionModal"></p>
@@ -70,7 +69,6 @@
         <h1 class="modal-title fs-5" id="tituloModal">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <img id="fotoModal" src="/img/SobreP.jpeg" alt="SobreN">
       <div class="modal-body">
         <h2>Descripcion: </h2>
         <p id="descripcionModal"></p>

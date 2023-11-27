@@ -102,17 +102,19 @@ p {
         background-color: #3498db; /* Color de fondo del botón principal */
     }
 
-    &.btn-secondary {
-        background-color: #e74c3c; /* Color de fondo del botón secundario */
-    }
-
     &:hover {
         background-color: #2980b9; /* Color de fondo en hover del botón principal */
     }
 
-    &:hover.btn-secondary {
-        background-color: #c0392b; /* Color de fondo en hover del botón secundario */
-    }
+}
+
+.btn-secondary {
+    background-color: #e74c3c; /* Color de fondo del botón secundario */
+}
+
+
+:hover.btn-secondary {
+    background-color: #c0392b; /* Color de fondo en hover del botón secundario */
 }
 
 /* Estilos específicos para el texto de los botones */

@@ -53,14 +53,23 @@ function AbrirSobrePremium(ID) {
         data: { id: ID },
         success: function (response) {
             let temp = "";
+            console.log("a");
 
-            response.forEach(element => {
+            if(response != null)
+            { 
+                response.forEach(element => {
                 temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
-            });
+                });
+                $("#figuritasObtenidas").html(temp);
 
-            $("#figuritasObtenidas").html(temp);
+            }else{
+                $("#figuritasObtenidas").html(`<h3>No tenes monedas suficientes!</h3>`);
+
+
+                }
+            }
         }
-    });
+    );
     
     RestarMonedas(8)
     
@@ -75,14 +84,21 @@ function AbrirSobreNormal(ID) {
         data: { id: ID },
         success: function (response) {
             let temp = "";
+            console.log("a");
 
-            response.forEach(element => {
+            if(response != null)
+            { 
+                response.forEach(element => {
                 temp += `<img src="/img/jugadores/${element.imagenJugador}" alt="${element.nombre}" class="img-figuritaSobre"/>`;
-            });
+                });
+                $("#figuritasObtenidas").html(temp);
 
-            $("#figuritasObtenidas").html(temp);
+            }else{
+                $("#figuritasObtenidas").html(`<h3>No tenes monedas suficientes!</h3>`);
+            }
+            }
         }
-    });
+    );
     RestarMonedas(4)
    
 }
@@ -140,7 +156,6 @@ function AbrirSobreModal(opcion, idUsuario) {
                     $("#buttonNormal").attr("id", "buttonPremium")
                     $("#buttonPremium").attr("onclick", "AbrirSobrePremium(" + idUsuario + ")")
                 }
-                $("#fotoModal").attr("src", response.foto)
                 $("#descripcionModal").html(response.descripcion)
                 $("#tituloModal").html(response.nombre)
                 $("#valorModal").html(response.valor)
