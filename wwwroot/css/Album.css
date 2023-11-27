@@ -15,7 +15,7 @@ body {
 /* Establecer tamaño máximo para cada imagen */
 .container img {
     max-width: 200px; /* Ancho máximo */
-    width: 150%; /* Para asegurar que no exceda el ancho máximo */
-    height: 70%; /* Mantener proporción */
+    width: 160%; /* Para asegurar que no exceda el ancho máximo */
+    height: 68%; /* Mantener proporción */
 
 }

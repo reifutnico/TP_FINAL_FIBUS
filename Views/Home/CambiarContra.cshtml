@@ -44,14 +44,7 @@
                 <input type="password" id="confirmPassword" name="confirmarContraseña" onkeyup="validatePassword()" placeholder="Confirme su contraseña..">
                 <p id="confirmacion"></p>
             </div>
-        </div>
-        <div class = "BotonLogin">
-            <h3><a href='@Url.Action("ActualizarContra")'><input type="submit" value="Actualizar"></input></a></h3>
-        </div>
-    </div>
-</form>
-
-        @if (ViewBag.MensajeErrorCAMBIARCONTRA == -1){
+                    @if (ViewBag.MensajeErrorCAMBIARCONTRA == -1){
             <div class = "MSJ-error">
                 <strong>Cuidado!</strong>La contraseña no cumple con los requesitos
             </div>
@@ -71,4 +64,12 @@
                 <strong>Cuidado!</strong> Confirmación de contraseña fallida 
             </div>}
             
+        </div>
+        <div class = "BotonLogin">
+            <h3><a href='@Url.Action("ActualizarContra")'><input type="submit" value="Actualizar"></input></a></h3>
+        </div>
+    </div>
+</form>
+
+
 </div>

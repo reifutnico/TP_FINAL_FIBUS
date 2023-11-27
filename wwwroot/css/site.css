@@ -34,6 +34,11 @@ body {
   box-sizing: border-box;
 }
 
+footer {
+  position: fixed; 
+  bottom: 0; 
+  margin: 10px 0px 20px 0px;
+}
 
 footer {
   position: fixed; 
@@ -67,7 +72,7 @@ h3{
   margin-bottom: 20px;
 }
 .Formulario{
-  margin-top: 30px;
+  margin-top: 15px;
 }
 .Opciones{
   margin-top: 50px;
@@ -162,23 +167,36 @@ a {
 
 /* Menu */
 
-nav ul{
+nav {
+  background-color: #5C1A1B; /* Color rojo vino tinto */
+  padding: 10px 0; /* Ajuste del espaciado */
+}
+
+nav ul {
   display: flex;
   justify-content: space-around;
+  margin: 0; /* Eliminamos el margen predeterminado */
+  padding: 0; /* Eliminamos el relleno predeterminado */
 }
 
-nav li{
+nav li {
   list-style: none;
 }
-
-nav li a{
+nav li a {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
+  padding: 8px 15px; /* Ajuste del espaciado para los enlaces */
+  border-radius: 5px; /* Bordes redondeados para los enlaces */
+  transition: background-color 0.3s ease; /* Efecto de transición suave */
 }
 
-header{
-  background-color: grey;
+nav li a:hover {
+  background-color: #8C1C1D; /* Color de fondo al pasar el mouse */
+}
+
+header {
+  background-color: rgb(248, 180, 180); /* Cambiamos el color de fondo del header (puedes ajustarlo según tu preferencia) */
   padding-top: 20px;
   padding-bottom: 20px;
 }

@@ -43,42 +43,45 @@
                 <div class="col-75">
                     <input type="email" id="mail" name="mail" placeholder="Su mail..">
                 </div>
-        </div>
+            @if (ViewBag.MensajeErrorREGISTRARSE == -1){
+            <div class = "MSJ-error">
+            <strong>Cuidado!</strong>El nombre de usuario ya está en uso
+            </div>
+            }
+            @if (ViewBag.MensajeErrorREGISTRARSE == -2){
+                <div class = "MSJ-error">
+                    <strong>Cuidado!</strong> No cumple con las condiciones de seguridad de la contraseña
+                </div>}
+
+                
+            @if (ViewBag.MensajeErrorREGISTRARSE == -3){
+                <div class = "MSJ-error">
+                    <strong>Cuidado!</strong>El Nombre de usuario es igual a la contraseña o estas al email
+                </div>
+            }
+            @if (ViewBag.MensajeErrorREGISTRARSE ==-4){
+                <div class = "MSJ-error">
+                    <strong>Cuidado!</strong>Confirmación de contraseña fallida 
+                </div>
+            }
+            @if (ViewBag.MensajeErrorREGISTRARSE == -5){
+                <div class = "MSJ-error">
+                    <strong>Cuidado!</strong> Nombre de usuario no permitido
+                </div>
+            }
+            @if (ViewBag.MensajeErrorREGISTRARSE == -6){
+                <div class = "MSJ-error">
+                    <strong>Cuidado!</strong> El email ya esta en uso
+                </div>
+            }
+            </div>
+
         <div class = "BotonLogin">
             <h3><a href='@Url.Action("Registro")'><input type="submit" value="Registrarse"></input></a></h3>
         </div>
     </div>
+         
 </form>
-        @if (ViewBag.MensajeErrorREGISTRARSE == -1){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong>El nombre de usuario ya está en uso
-            </div>
-        }
-        @if (ViewBag.MensajeErrorREGISTRARSE == -2){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong> No cumple con las condiciones de seguridad de la contraseña
-            </div>}
 
-             
-          @if (ViewBag.MensajeErrorREGISTRARSE == -3){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong>El Nombre de usuario es igual a la contraseña o estas al email
-            </div>
-        }
-        @if (ViewBag.MensajeErrorREGISTRARSE ==-4){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong>Confirmación de contraseña fallida 
-            </div>
-        }
-        @if (ViewBag.MensajeErrorREGISTRARSE == -5){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong> Nombre de usuario no permitido
-            </div>
-        }
-        @if (ViewBag.MensajeErrorREGISTRARSE == -6){
-            <div class = "MSJ-error">
-                <strong>Cuidado!</strong> El email ya esta en uso
-            </div>
-        }
 </div>
 

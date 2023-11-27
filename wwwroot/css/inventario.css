@@ -1,4 +1,11 @@
 /* Estilos para los círculos */
+
+
+body {
+  background-color: #6b2737;
+}
+
+
 .Circulo {
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +24,6 @@
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   margin: 10px; /* Espacio entre cada círculo */
-  color: black; /* Color del número dentro del círculo blanco */
   border: 2px solid black; /* Borde de 2px sólido negro */
 }
 
@@ -27,7 +33,6 @@
 {
 display: flex;
 flex-wrap: wrap;
-background-color: #6b2737;
 }
   .Circulo_Blanco,
   .Circulo_Gris {
@@ -38,7 +43,7 @@ background-color: #6b2737;
     align-items: center; /* Centra verticalmente */
     margin-right: 10px; /* Espacio entre cada círculo */
     background-color: white; /* Color de fondo blanco */
-    color: black; /* Color del número dentro del círculo blanco */
+    color: rgb(0, 0, 0); /* Color del número dentro del círculo blanco */
     border: 30px solid black; /* Borde de 2px sólido negro */
     flex-direction: row;
 
@@ -54,7 +59,7 @@ background-color: #6b2737;
 
 /* Estilos específicos para el círculo gris */
 .Circulo_Gris {
-  background-color: #adadad; /* Color de fondo gris */
-  color: black; /* Color del número dentro del círculo gris */
+  background-color: #070000; /* Color de fondo gris */
+  color: rgb(255, 255, 255); /* Color del número dentro del círculo gris */
   border: 2px solid black; /* Borde de 2px sólido negro */
 }
