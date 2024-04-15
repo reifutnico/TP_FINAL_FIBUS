@@ -226,6 +226,33 @@ public class HomeController : Controller
         return Json(null);
         }
     }
+   
+        public IActionResult Mercado()
+    {
+        //mostrar mercado
+        return View();
+    }
+
+     public void VenderFiguritaMercado(int precio, string descripcion, int idFigurita)
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+       
+        int idInventario = BD.ObtenerIdInventario(user.IdUsuario);//hacerlo con ajax(ya existe)
+        BD.CambiarRepetidas(idInventario, idFigurita);
+
+        TempData["UsuarioActual"] = idUsuarioActual;
+        BD.PublicarMercado(idFigurita,precio,descripcion,idInventario,idUsuarioActual); //()
+    }
+
+        public void VenderFiguritaMercado()
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        TempData["UsuarioActual"] = idUsuarioActual;
+        BD.ComprarMercado(); //eliminar del ViewBag y la BD
+        //actualizar monedas
+    }
 
     public IActionResult AbrirSobreNAjax(int id)
     {

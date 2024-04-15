@@ -157,7 +157,19 @@ function Vender(id,precio){
             GanarMonedas(precio)
         }
     });
-    
+}
+
+function Publicar(id){
+    $.ajax({
+        url: '/Home/ActualizarRepetidas',
+        data: {idFigu: id},
+        type: 'POST',
+        dataType: 'JSON',
+       error: function(){
+            console.log("aaaaa")
+            $("#" + id).remove()
+        }
+    });
 }
 
 function AbrirSobreModal(opcion, idUsuario) {

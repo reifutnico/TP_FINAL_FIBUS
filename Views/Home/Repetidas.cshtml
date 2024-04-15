@@ -33,6 +33,13 @@
                 <h1>@item.Nombre</h1> 
                 <h1>@item.Apellido</h1>
                 <button onclick="Vender('@item.IdFigurita','@item.Precio')">vender por @item.Precio</button>
+               
+                <form id="venderForm" action='@Url.Action("Mercado", "HomeController")' method="post">
+                <input type="text" name="precio" id="precioInput" placeholder="Precio">
+                <input type="text" name="descripcion" id="descripcionInput" placeholder="Descripción">
+                <input type="hidden" name="idFigurita" value="@item.IdFigurita">
+                <button type="submit">Vender</button>
+                </form>
             </div>
         }
     </div>
