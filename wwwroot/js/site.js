@@ -147,7 +147,7 @@ function RestarMonedas(p){
 }
 function Vender(id,precio){
     $.ajax({
-        url: '/Home/ActualizarRepetidas',
+        url: '/Home/',
         data: {idFigu: id},
         type: 'POST',
         dataType: 'JSON',
@@ -158,6 +158,21 @@ function Vender(id,precio){
         }
     });
 }
+
+function VenderMercado(id,precio){
+    $.ajax({
+        url: '/Home/ActualizarMercado',
+        data: {idFigu: id},
+        type: 'POST',
+        dataType: 'JSON',
+       error: function(){
+            console.log("aaaaa")
+            $("#" + id).remove()
+            GanarMonedas(precio)
+        }
+    });
+}
+
 
 function Publicar(id){
     $.ajax({
@@ -226,6 +241,6 @@ function publicarAlMercadoYV(precio, idFigurita) {
 }
 
 
-function ComprarFiguPublicada(params) {
-    
+function ComprarFiguPublicada(Precio,IdFigurita,IdUsuario) {
+    GanarMonedas(precio)
 }

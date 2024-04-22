@@ -29,7 +29,7 @@
             <div class="figurita" id="@item.IdFigurita">
                <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" class="img-figurita" />
                 <h1>@item.Apellido</h1>
-                <button onclick="ComprarFiguPublicada()"> precio @item.Precio  </button>
+                <button onclick="ComprarFiguPublicada('@item.Precio', '@item.IdFigurita', '@item.IdUsuario')"> precio @item.Precio  </button>
                 <h3>Descripcion : @item.Descripcion</h3>
                 <h3>Usuario : @item.IdUsuario</h3>
             </div>

@@ -43,7 +43,7 @@ public class HomeController : Controller
         int idUsuarioActual = (int)TempData["UsuarioActual"];
         Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
-        BD.CambiarRepetidas(idInventario, idFigu);
+        BD.EliminarDelMercado(idFigu);
         TempData["UsuarioActual"] = idUsuarioActual;
     }
 
@@ -255,7 +255,7 @@ public class HomeController : Controller
         TempData["UsuarioActual"] = idUsuarioActual;
         Console.WriteLine($"idFigurita: {idFigurita}, idInventario: {idInventario}, idUsuarioActual: {idUsuarioActual}, precio: {precio}, descripcion: {descripcion}");
         BD.PublicarMercado(idFigurita,idInventario,idUsuarioActual,precio,descripcion); 
-    }
+    }   
 
       /*  public void VenderFiguritaMercado()
     {
