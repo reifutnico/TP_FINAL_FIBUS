@@ -112,6 +112,16 @@ function GanarMonedas(p){
         }
     })
 }
+
+function GanarMonedasM(p,i){
+    $.ajax({
+        url: '/Home/RecibirM',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {precio:p, IdUsuario:i},
+    })
+}
+
 function GanarMonedasVideos() {
     // Lista de videos de YouTube
     var videos = [
@@ -168,7 +178,7 @@ function VenderMercado(id,precio){
        error: function(){
             console.log("aaaaa")
             $("#" + id).remove()
-            GanarMonedas(precio)
+            GanarMonedasM(precio)
         }
     });
 }
@@ -242,5 +252,7 @@ function publicarAlMercadoYV(precio, idFigurita) {
 
 
 function ComprarFiguPublicada(Precio,IdFigurita,IdUsuario) {
-    GanarMonedas(precio)
+    GanarMonedasM(Precio,IdUsuario)
+
+
 }

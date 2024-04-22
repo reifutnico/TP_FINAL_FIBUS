@@ -182,9 +182,16 @@ public class HomeController : Controller
         int idUsuarioActual = (int)TempData["UsuarioActual"];
         Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         int cantMonedas = user.Monedas + precio;
-
         BD.CambiarMonedas(idUsuarioActual, cantMonedas);
         TempData["UsuarioActual"] = idUsuarioActual;
+        return cantMonedas;
+    }
+
+      public int RecibirM(int precio, int IdUsuario)
+    {
+        Usuario user = BD.GetUsuarioByID(IdUsuario);
+        int cantMonedas = user.Monedas + precio;
+        BD.CambiarMonedas(IdUsuario, cantMonedas);
         return cantMonedas;
     }
 
