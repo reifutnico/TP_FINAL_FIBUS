@@ -224,3 +224,8 @@ function publicarAlMercadoYV(precio, idFigurita) {
     venderFiguritaMercado(precio, idFigurita);
     Vender(idFigurita,0); 
 }
+
+
+function ComprarFiguPublicada(params) {
+    
+}

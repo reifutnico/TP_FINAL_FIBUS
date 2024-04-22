@@ -140,6 +140,19 @@ public class BD
             db.Execute(sql, new{idI=idInventario,idF=idFigu});
         }
     }
+
+public static void EliminarDelMercado(int idFigurita)
+{
+    using (SqlConnection db = new SqlConnection(_connectionstring))
+    {
+        string sql = @"
+            DELETE FROM Mercado
+            WHERE IdFigurita = @idFigurita";
+            
+        db.Execute(sql, new { idFigurita });
+    }
+}
+
         public static int ObtenerIdInventario(int idUsuario){
         using (SqlConnection db=new SqlConnection(_connectionstring)){
             string sql = "select IdInventario from Inventario where IdUsuario = @idU";
@@ -165,14 +178,14 @@ public static void PublicarMercado(int idFigurita, int idInventario, int idUsuar
     }
 }
 
-    public static List<Figuritas> obtenerMercado()
+public static List<MercadoItem> obtenerMercado()
 {
     using (SqlConnection db = new SqlConnection(_connectionstring))
     {
-        string sql = @"SELECT M.IdFigurita, M.IdInventario, M.IdUsuario, M.Precio, M.descripcion, F.ImagenJugador. F.Nombre, F.Apellido
+        string sql = @"SELECT M.IdFigurita, M.IdInventario, M.IdUsuario, M.Precio, M.descripcion, F.ImagenJugador, F.Nombre, F.Apellido
                        FROM Mercado AS M
                        INNER JOIN Figuritas AS F ON M.IdFigurita = F.IdFigurita";
-        return db.Query<Figuritas>(sql).ToList();
+        return db.Query<MercadoItem>(sql).ToList();
     }
 }
 

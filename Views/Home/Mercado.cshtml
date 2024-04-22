@@ -18,6 +18,8 @@
     </nav>
 </header>
 
+<link rel="stylesheet" href="~/css/Repetidas.css">
+
 
 @if(ViewBag.Mercado != null && ViewBag.Mercado.Count > 0)
 {
@@ -25,16 +27,18 @@
         @foreach(var item in ViewBag.Mercado)
         {
             <div class="figurita" id="@item.IdFigurita">
-               <img src="~/img/Jugadores/@item.IdFigurita.ImagenJugador" alt="Imagen de @item.IdFigurita.Nombre @item.IdFigurita.Apellido" class="img-figurita" />
+               <img src="~/img/Jugadores/@item.ImagenJugador" alt="Imagen de @item.Nombre @item.Apellido" class="img-figurita" />
                 <h1>@item.Apellido</h1>
-                <button onclick="Vender('@item.descripcion','@item.Precio')">vender por @item.Precio</button>
+                <button onclick="ComprarFiguPublicada()"> precio @item.Precio  </button>
+                <h3>Descripcion : @item.Descripcion</h3>
+                <h3>Usuario : @item.IdUsuario</h3>
             </div>
         }
     </div>
 }
 else
 {
-<div class="centered-content">
-    <h1>NO HAY REPETIDAS DISPONIBLES</h1>
-</div>
+    <div class="centered-content">
+        <h1>NO HAY JUGADORES DISPONIBLES EN EL MERCADO</h1>
+    </div>
 }

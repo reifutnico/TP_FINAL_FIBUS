@@ -38,6 +38,15 @@ public class HomeController : Controller
         TempData["UsuarioActual"] = idUsuarioActual;
     }
 
+        public void ActualizarMercado(int idFigu)
+    {
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
+        BD.CambiarRepetidas(idInventario, idFigu);
+        TempData["UsuarioActual"] = idUsuarioActual;
+    }
+
     public IActionResult Registrarse()
     {
         return View("Registrarse");
