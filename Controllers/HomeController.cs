@@ -229,7 +229,12 @@ public class HomeController : Controller
    
         public IActionResult Mercado()
     {
-        //mostrar mercado
+        int idUsuarioActual = (int)TempData["UsuarioActual"];
+        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        ViewBag.Usuario = user;
+        ViewBag.Figuritas = BD.obtenerFiguritas();
+        ViewBag.Mercado = BD.obtenerMercado();
+        TempData["UsuarioActual"] = idUsuarioActual;
         return View();
     }
 
@@ -237,22 +242,20 @@ public class HomeController : Controller
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];
         Usuario user = BD.GetUsuarioByID(idUsuarioActual);
-       
-        int idInventario = BD.ObtenerIdInventario(user.IdUsuario);//hacerlo con ajax(ya existe)
-        BD.CambiarRepetidas(idInventario, idFigurita);
-
+        int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
         TempData["UsuarioActual"] = idUsuarioActual;
-        BD.PublicarMercado(idFigurita,precio,descripcion,idInventario,idUsuarioActual); //()
+        Console.WriteLine($"idFigurita: {idFigurita}, idInventario: {idInventario}, idUsuarioActual: {idUsuarioActual}, precio: {precio}, descripcion: {descripcion}");
+        BD.PublicarMercado(idFigurita,idInventario,idUsuarioActual,precio,descripcion); 
     }
 
-        public void VenderFiguritaMercado()
+      /*  public void VenderFiguritaMercado()
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];
         Usuario user = BD.GetUsuarioByID(idUsuarioActual);
         TempData["UsuarioActual"] = idUsuarioActual;
         BD.ComprarMercado(); //eliminar del ViewBag y la BD
         //actualizar monedas
-    }
+    }*/
 
     public IActionResult AbrirSobreNAjax(int id)
     {

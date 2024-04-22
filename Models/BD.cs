@@ -147,5 +147,38 @@ public class BD
         }
     }
     
-    
+public static void PublicarMercado(int idFigurita, int idInventario, int idUsuarioActual, int precio, string descripcion)
+{
+    using (SqlConnection db = new SqlConnection(_connectionstring))
+    {
+        string sql = @"INSERT INTO Mercado (IdFigurita, IdInventario, IdUsuario, Precio, Descripcion)
+                       VALUES (@IdFigurita, @IdInventario, @IdUsuario, @Precio, @Descripcion)";
+        
+        db.Execute(sql, new 
+        {
+            IdFigurita = idFigurita,
+            IdInventario = idInventario,
+            IdUsuario = idUsuarioActual,
+            Precio = precio,
+            Descripcion = descripcion
+        });
     }
+}
+
+    public static List<Figuritas> obtenerMercado()
+{
+    using (SqlConnection db = new SqlConnection(_connectionstring))
+    {
+        string sql = @"SELECT M.IdFigurita, M.IdInventario, M.IdUsuario, M.Precio, M.descripcion, F.ImagenJugador. F.Nombre, F.Apellido
+                       FROM Mercado AS M
+                       INNER JOIN Figuritas AS F ON M.IdFigurita = F.IdFigurita";
+        return db.Query<Figuritas>(sql).ToList();
+    }
+}
+
+
+}
+
+
+
+

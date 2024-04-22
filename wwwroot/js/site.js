@@ -195,3 +195,32 @@ function AbrirSobreModal(opcion, idUsuario) {
 
 }
 
+function venderFiguritaMercado(precioActual, idFigurita) {
+    var nuevaDescripcion = prompt("Ingrese la descripción:");
+    var nuevoPrecio = prompt("Ingrese el nuevo precio:");
+    
+    if (nuevaDescripcion !== null && nuevoPrecio !== null) {
+        $.ajax({
+            url: '/Home/VenderFiguritaMercado',
+            type: 'POST',
+            data: {
+                precio: nuevoPrecio,
+                descripcion: nuevaDescripcion,
+                idFigurita: idFigurita
+            },
+            success: function(data) {
+                console.log("Venta realizada con éxito.");
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.error("Error al realizar la venta:", errorThrown);
+            }
+        });
+    } else {
+        console.log("Venta cancelada por el usuario.");
+    }
+}
+
+function publicarAlMercadoYV(precio, idFigurita) {
+    venderFiguritaMercado(precio, idFigurita);
+    Vender(idFigurita,0); 
+}

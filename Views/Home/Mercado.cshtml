@@ -1,0 +1,40 @@
+<header>
+    <nav>
+        <ul>
+            <li><a href='@Url.Action("Album")'>Album</a></li>
+            <li><a href='@Url.Action("AbrirSobres")'>Abrir sobres</a></li>
+            <li><a href='@Url.Action("Repetidas")'>Repetidas</a></li>
+            <li><a href='@Url.Action("Inventario")'>Inventario</a></li>
+            <li><a href='@Url.Action("Mercado")'>Mercado</a></li>
+
+        </ul>
+        <div class="imagenesNav">
+            <ul>
+                <button type="button" onclick="GanarMonedasVideos()" class="botonVideos">Ganar Monedas <img src="~/img/Youtu.png"></button>
+                <li><a id="lugarMonedas">@ViewBag.Usuario.Monedas <img src="~/img/moneda.png">  </a> </li>
+                <li><a href='@Url.Action("InicioSesion")'> <img src="~/img/salir.png"> </a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+@if(ViewBag.Mercado != null && ViewBag.Mercado.Count > 0)
+{
+    <div class="figuritas">
+        @foreach(var item in ViewBag.Mercado)
+        {
+            <div class="figurita" id="@item.IdFigurita">
+               <img src="~/img/Jugadores/@item.IdFigurita.ImagenJugador" alt="Imagen de @item.IdFigurita.Nombre @item.IdFigurita.Apellido" class="img-figurita" />
+                <h1>@item.Apellido</h1>
+                <button onclick="Vender('@item.descripcion','@item.Precio')">vender por @item.Precio</button>
+            </div>
+        }
+    </div>
+}
+else
+{
+<div class="centered-content">
+    <h1>NO HAY REPETIDAS DISPONIBLES</h1>
+</div>
+}
