@@ -113,14 +113,7 @@ function GanarMonedas(p){
     })
 }
 
-function GanarMonedasM(p,i){
-    $.ajax({
-        url: '/Home/RecibirM',
-        type: 'POST',
-        dataType: 'JSON',
-        data: {precio:p, IdUsuario:i},
-    })
-}
+
 
 function GanarMonedasVideos() {
     // Lista de videos de YouTube
@@ -157,7 +150,7 @@ function RestarMonedas(p){
 }
 function Vender(id,precio){
     $.ajax({
-        url: '/Home/',
+        url: '/Home/ActualizarRepetidas',
         data: {idFigu: id},
         type: 'POST',
         dataType: 'JSON',
@@ -169,33 +162,8 @@ function Vender(id,precio){
     });
 }
 
-function VenderMercado(id,precio){
-    $.ajax({
-        url: '/Home/ActualizarMercado',
-        data: {idFigu: id},
-        type: 'POST',
-        dataType: 'JSON',
-       error: function(){
-            console.log("aaaaa")
-            $("#" + id).remove()
-            GanarMonedasM(precio)
-        }
-    });
-}
 
 
-function Publicar(id){
-    $.ajax({
-        url: '/Home/ActualizarRepetidas',
-        data: {idFigu: id},
-        type: 'POST',
-        dataType: 'JSON',
-       error: function(){
-            console.log("aaaaa")
-            $("#" + id).remove()
-        }
-    });
-}
 
 function AbrirSobreModal(opcion, idUsuario) {
         $.ajax({
@@ -220,7 +188,7 @@ function AbrirSobreModal(opcion, idUsuario) {
 
 }
 
-function venderFiguritaMercado(precioActual, idFigurita) {
+function PublicarFiguritaMercado(precioActual, idFigurita) {
     var nuevaDescripcion = prompt("Ingrese la descripción:");
     var nuevoPrecio = prompt("Ingrese el nuevo precio:");
     
@@ -245,14 +213,44 @@ function venderFiguritaMercado(precioActual, idFigurita) {
     }
 }
 
+
+
+function VenderMercado(id,precio,IdUsuario){
+    $.ajax({
+        url: '/Home/ActualizarMercado',
+        data: {idFigu: id, IdUsuario : IdUsuario },
+        type: 'POST',
+        dataType: 'JSON',
+       error: function(){
+            console.log("aaaaa")
+            $("#" + id).remove()
+            GanarMonedasM(precio,IdUsuario)
+        }
+    });
+}
+
+
+function GanarMonedasM(p,i){
+    $.ajax({
+        url: '/Home/RecibirM',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {precio:p, IdUsuario:i},
+    })
+}
+
+
+
 function publicarAlMercadoYV(precio, idFigurita) {
-    venderFiguritaMercado(precio, idFigurita);
+    PublicarFiguritaMercado(precio, idFigurita);
+    if (precio!= null || precio != 0) {
     Vender(idFigurita,0); 
+    }
 }
 
 
 function ComprarFiguPublicada(Precio,IdFigurita,IdUsuario) {
-    GanarMonedasM(Precio,IdUsuario)
+    VenderMercado(IdFigurita,Precio,IdUsuario)
 
 
 }

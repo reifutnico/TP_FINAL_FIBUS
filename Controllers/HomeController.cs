@@ -38,13 +38,12 @@ public class HomeController : Controller
         TempData["UsuarioActual"] = idUsuarioActual;
     }
 
-        public void ActualizarMercado(int idFigu)
+     public void ActualizarMercado(int idFigu, int IdUsuario)
     {
-        int idUsuarioActual = (int)TempData["UsuarioActual"];
-        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+        Usuario user = BD.GetUsuarioByID(IdUsuario);
         int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
+        BD.CambiarRepetidas(idInventario, idFigu);
         BD.EliminarDelMercado(idFigu);
-        TempData["UsuarioActual"] = idUsuarioActual;
     }
 
     public IActionResult Registrarse()
@@ -243,6 +242,7 @@ public class HomeController : Controller
         }
     }
    
+   
         public IActionResult Mercado()
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];
@@ -262,16 +262,7 @@ public class HomeController : Controller
         TempData["UsuarioActual"] = idUsuarioActual;
         Console.WriteLine($"idFigurita: {idFigurita}, idInventario: {idInventario}, idUsuarioActual: {idUsuarioActual}, precio: {precio}, descripcion: {descripcion}");
         BD.PublicarMercado(idFigurita,idInventario,idUsuarioActual,precio,descripcion); 
-    }   
-
-      /*  public void VenderFiguritaMercado()
-    {
-        int idUsuarioActual = (int)TempData["UsuarioActual"];
-        Usuario user = BD.GetUsuarioByID(idUsuarioActual);
-        TempData["UsuarioActual"] = idUsuarioActual;
-        BD.ComprarMercado(); //eliminar del ViewBag y la BD
-        //actualizar monedas
-    }*/
+    }  
 
     public IActionResult AbrirSobreNAjax(int id)
     {
