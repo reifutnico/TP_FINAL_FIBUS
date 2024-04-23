@@ -32,6 +32,8 @@
                 <button onclick="ComprarFiguPublicada('@item.Precio', '@item.IdFigurita', '@item.IdUsuario')"> precio @item.Precio  </button>
                 <h3>Descripcion : @item.Descripcion</h3>
                 <h3>Usuario : @item.IdUsuario</h3>
+                <h3>Numero figurita: @(item.IdFigurita - 1)</h3>
+
             </div>
         }
     </div>

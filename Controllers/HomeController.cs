@@ -241,8 +241,26 @@ public class HomeController : Controller
         return Json(null);
         }
     }
-   
-   
+   public IActionResult ComprarJugadorMercado(int IdFigurita, int precio)
+{
+    int idUsuarioActual = (int)TempData["UsuarioActual"];
+    Usuario user = BD.GetUsuarioByID(idUsuarioActual);
+    int idInventario = BD.ObtenerIdInventario(user.IdUsuario);
+    if (user.Monedas >= precio)
+    {
+        Console.WriteLine("Nosfdfdsfds!");
+        BD.ComprarJugador(idInventario, IdFigurita);
+        TempData["UsuarioActual"] = idUsuarioActual;
+        return Json(new { success = true });
+    }
+    else
+    {
+        TempData["UsuarioActual"] = idUsuarioActual;
+        Console.WriteLine("No tienes monedas suficientes!");
+        return Json(null);
+    }
+}
+
         public IActionResult Mercado()
     {
         int idUsuarioActual = (int)TempData["UsuarioActual"];

@@ -188,11 +188,11 @@ function AbrirSobreModal(opcion, idUsuario) {
 
 }
 
-function PublicarFiguritaMercado(precioActual, idFigurita) {
+function PublicarFiguritaMercado(idFigurita,precioActual) {
     var nuevaDescripcion = prompt("Ingrese la descripción:");
     var nuevoPrecio = prompt("Ingrese el nuevo precio:");
     
-    if (nuevaDescripcion !== null && nuevoPrecio !== null) {
+    if (nuevaDescripcion !== null && nuevoPrecio !== null && nuevoPrecio>precioActual  ) {
         $.ajax({
             url: '/Home/VenderFiguritaMercado',
             type: 'POST',
@@ -203,13 +203,15 @@ function PublicarFiguritaMercado(precioActual, idFigurita) {
             },
             success: function(data) {
                 console.log("Venta realizada con éxito.");
+                Vender(idFigurita,0); //desaparece
+
             },
             error: function(xhr, textStatus, errorThrown) {
                 console.error("Error al realizar la venta:", errorThrown);
             }
         });
     } else {
-        console.log("Venta cancelada por el usuario.");
+       alert("El precio es igual o menor. o fue un error en el relleno de datos");
     }
 }
 
@@ -241,16 +243,29 @@ function GanarMonedasM(p,i){
 
 
 
-function publicarAlMercadoYV(precio, idFigurita) {
-    PublicarFiguritaMercado(precio, idFigurita);
-    if (precio!= null || precio != 0) {
-    Vender(idFigurita,0); 
-    }
+function publicarAlMercadoYV(idFigurita,precioActual) {
+    PublicarFiguritaMercado(idFigurita,precioActual);
+
 }
 
 
-function ComprarFiguPublicada(Precio,IdFigurita,IdUsuario) {
-    VenderMercado(IdFigurita,Precio,IdUsuario)
+function ComprarJugador(precio, idFigurita, idUsuario) {
+    $.ajax({
+        url: '/Home/ComprarJugadorMercado',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { IdFigurita: idFigurita, precio: precio }, 
+        success: function (response) {
+            if (response != null && response.success) {
+                RestarMonedas(precio);
+                VenderMercado(idFigurita, precio, idUsuario); 
+            } else {
+                alert ("no tienes monedas suficientes")
+            }
+        }
+    });
+}
 
-
+function ComprarFiguPublicada(precio, idFigurita, idUsuario) {
+    ComprarJugador(precio, idFigurita, idUsuario); 
 }

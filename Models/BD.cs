@@ -5,7 +5,7 @@ namespace tpFinal.Models;
 
 public class BD
 {
-    private static string _connectionstring=@"Server=.;Database=BDAlbum;Trusted_Connection=True;";
+    private static string _connectionstring=@"Server=DESKTOP-SEAVP9L\SQLEXPRESS;Database=BDAlbum;Trusted_Connection=True;";
 
     public static bool Login(string Nombre, string Contraseña){
         bool correcto=false;    
@@ -186,6 +186,18 @@ public static List<MercadoItem> obtenerMercado()
                        FROM Mercado AS M
                        INNER JOIN Figuritas AS F ON M.IdFigurita = F.IdFigurita";
         return db.Query<MercadoItem>(sql).ToList();
+    }
+}
+
+public static void ComprarJugador( int idInventario,int idFigurita)
+{
+    using (SqlConnection db = new SqlConnection(_connectionstring))
+    {
+        string sql = @"INSERT INTO InventarioXFigus (IdInventario,IdFigurita)
+                       VALUES (@IdInventario, @IdFigurita)";
+        
+        db.Execute(sql, new 
+        {IdInventario = idInventario,IdFigurita = idFigurita});
     }
 }
 
